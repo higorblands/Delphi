@@ -34,24 +34,21 @@ implementation
 procedure TForm3.btCalcularClick(Sender: TObject);
 begin      // Executando condicional de qual RADIO BTN foi marcado
   if (rdbAdicao.Checked) then
-    begin
+  begin
     edtValorResultado.Text := (FloatToStr(exibirValorAdicao(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
-    end
-  else
-      if (rdbSubtracao.Checked) then
-        begin
-        edtValorResultado.Text := (FloatToStr(exibirValorSubtracao(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
-        end
-      else
-        if (rdbMultiplicacao.Checked) then
-          begin
-          edtValorResultado.Text := (FloatToStr(exibirValorMultiplicacao(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
-          end
-        else
-        if (rdbDivisao.Checked) then
-          begin
-            edtValorResultado.Text := (FloatToStr(exibirValorDivisao(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
-          end
+  end
+  else if (rdbSubtracao.Checked) then
+  begin
+    edtValorResultado.Text := (FloatToStr(exibirValorSubtracao(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
+  end
+  else if (rdbMultiplicacao.Checked) then
+  begin
+    edtValorResultado.Text := (FloatToStr(exibirValorMultiplicacao(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
+  end
+  else if (rdbDivisao.Checked) then
+  begin
+    edtValorResultado.Text := (FloatToStr(exibirValorDivisao(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
+  end
 end;
 
 // Usando as funções

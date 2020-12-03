@@ -17,14 +17,11 @@ object Form3: TForm3
     Left = 0
     Top = 0
     Width = 527
-    Height = 242
+    Height = 13
     Align = alTop
     Alignment = taCenter
     Caption = 'Calculadora'
-    ExplicitLeft = 208
-    ExplicitTop = 32
     ExplicitWidth = 56
-    ExplicitHeight = 13
   end
   object edtValor1: TEdit
     Left = 24

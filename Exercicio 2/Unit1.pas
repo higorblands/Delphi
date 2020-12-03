@@ -1,0 +1,40 @@
+unit Unit1;
+interface
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+type
+    TForm1 = class(TForm)
+    Label1: TLabel;
+    edtInput: TEdit;
+    edtOutput: TEdit;
+    btConverter: TButton;
+    procedure btConverterClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    // Declarando funções
+    function myStrToAscii(text : string) : string;
+  end;
+var
+  Form1: TForm1;
+implementation
+{$R *.dfm}
+procedure TForm1.btConverterClick(Sender: TObject);
+  begin
+    edtOutput.Text := myStrToAscii(edtInput.Text);
+  end;
+function TForm1.myStrToAscii(text: string): string;
+  var
+    i,asciiNum : integer;
+    sLine : string;
+  begin
+    asciiNum := length(text);
+  for i := 1 to asciiNum do// 1
+  begin
+    sLine := sLine + (IntToStr(Ord(text[i]))) + ' ' ;
+  end;
+    Result := sLine;
+  end;
+end.
