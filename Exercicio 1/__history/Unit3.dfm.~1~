@@ -1,0 +1,61 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Calculadora'
+  ClientHeight = 242
+  ClientWidth = 527
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 0
+    Top = 0
+    Width = 527
+    Height = 242
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'Calculadora'
+    ExplicitLeft = 208
+    ExplicitTop = 32
+    ExplicitWidth = 56
+    ExplicitHeight = 13
+  end
+  object edtValor1: TEdit
+    Left = 24
+    Top = 200
+    Width = 121
+    Height = 21
+    TabOrder = 0
+    TextHint = 'Digite um n'#250'mero'
+  end
+  object edtValor2: TEdit
+    Left = 151
+    Top = 200
+    Width = 121
+    Height = 21
+    TabOrder = 1
+    TextHint = 'Digite um n'#250'mero'
+  end
+  object edtValorResultado: TEdit
+    Left = 288
+    Top = 200
+    Width = 137
+    Height = 21
+    TabOrder = 2
+    TextHint = 'Aguardando a opera'#231#227'o'
+  end
+  object btCalcular: TButton
+    Left = 444
+    Top = 198
+    Width = 75
+    Height = 25
+    Caption = 'Calcular'
+    TabOrder = 3
+  end
+end

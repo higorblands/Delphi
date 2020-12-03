@@ -1,0 +1,43 @@
+unit Unit3;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm3 = class(TForm)
+    Label1: TLabel;
+    edtValor1: TEdit;
+    edtValor2: TEdit;
+    edtValorResultado: TEdit;
+    btCalcular: TButton;
+    procedure btCalcularClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function exibirValor(valor1 : double; valor2 : double) : double ;
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+{ TForm3 }
+
+procedure TForm3.btCalcularClick(Sender: TObject);
+begin
+edtValorResultado.Text := (FloatToStr(ExibirValor(StrToFloat(edtValor1.Text),(StrTofloat(edtValor2.Text)))));
+end;
+
+function TForm3.exibirValor(valor1, valor2: double): double;
+begin
+Result := (valor1) + (valor2);
+end;
+
+end.
