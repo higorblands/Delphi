@@ -26,15 +26,17 @@ procedure TForm1.btConverterClick(Sender: TObject);
     edtOutput.Text := myStrToAscii(edtInput.Text);
   end;
 function TForm1.myStrToAscii(text: string): string;
-  var
-    i,asciiNum : integer;
-    sLine : string;
+// A = 65
+// B = 66
+// AB
+var
+  i : integer;
+begin
+  result := '';
+  for i := 1 to length(text) do// 1
   begin
-    asciiNum := length(text);
-  for i := 1 to asciiNum do// 1
-  begin
-    sLine := sLine + (IntToStr(Ord(text[i]))) + ' ' ;
+    result := result + (IntToStr(Ord(text[i])));
   end;
-    Result := sLine;
-  end;
+end;
+
 end.
