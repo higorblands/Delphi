@@ -1,0 +1,56 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    edtValor1: TEdit;
+    edtValor2: TEdit;
+    edtValor3: TEdit;
+    edtResultado: TEdit;
+    btVerificar: TButton;
+    Label1: TLabel;
+    procedure btVerificarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function verificarTriangulo (a : integer; b : integer ; c : integer) : integer;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+{ TForm1 }
+
+
+
+{ TForm1 }
+
+{ TForm1 }
+
+procedure TForm1.btVerificarClick(Sender: TObject);
+begin
+ edtResultado.Text := (StrToInt(verificarTriangulo(StrToInt(edtValor1.Text),(StrToInt(edtValor2.Text)))));
+end;
+
+function TForm1.verificarTriangulo(a, b, c: integer): integer;
+begin
+if (a) < (b) then
+  begin
+    if (b) < (c) then
+    begin
+      result := (a) + (b) + (c) ;
+    end;
+  end;
+end;
+
+end.
