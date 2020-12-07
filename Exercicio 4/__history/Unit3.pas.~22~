@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit3;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
-  TForm1 = class(TForm)
+  TForm3 = class(TForm)
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
@@ -18,7 +18,7 @@ type
     procedure verde(Sender : TObject);
     procedure vermelho (Sender : TObject);
     procedure amarelo (Sender : TObject);
-    procedure painel (Sender : TObject);
+
 
   private
     { Private declarations }
@@ -27,31 +27,26 @@ type
   end;
 
 var
-  Form1: TForm1;
+  Form3: TForm3;
 
 implementation
 
 {$R *.dfm}
 
 
-{ TForm1 }
+{ TForm3 }
 
-procedure TForm1.amarelo(Sender: TObject);
+procedure TForm3.amarelo(Sender: TObject);
 begin
    Panel1.Color := clYellow;
 end;
 
-procedure TForm1.painel(Sender: TObject);
-begin
- TForm1(Self);
-end;
-
-procedure TForm1.verde(Sender: TObject);
+procedure TForm3.verde(Sender: TObject);
 begin
  Panel1.Color := clGreen;
 end;
 
-procedure TForm1.vermelho(Sender: TObject);
+procedure TForm3.vermelho(Sender: TObject);
 begin
  Panel1.Color := clRed;
 end;

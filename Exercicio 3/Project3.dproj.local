@@ -1,16 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2020/11/26 11:53:57.000.067,=E:\Delphi\studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/12/03 21:59:30.000.991,=E:\Delphi\studio\Projects\Unit3.pas</Transaction>
-<<<<<<< HEAD
-    <Transaction>2020/12/03 21:59:56.000.977,E:\Delphi\studio\Projects\Unit3.dfm=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio 3\Unit3.dfm</Transaction>
-    <Transaction>2020/12/03 21:59:56.000.977,E:\Delphi\studio\Projects\Unit3.pas=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio 3\Unit3.pas</Transaction>
-    <Transaction>2020/12/03 23:47:44.000.754,E:\Delphi\studio\Projects\Project3.dproj=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio 3\Project3.dproj</Transaction>
-=======
-    <Transaction>2020/12/03 21:59:56.000.977,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio 3\Unit3.dfm=E:\Delphi\studio\Projects\Unit3.dfm</Transaction>
-    <Transaction>2020/12/03 21:59:56.000.977,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio 3\Unit3.pas=E:\Delphi\studio\Projects\Unit3.pas</Transaction>
-    <Transaction>2020/12/03 23:47:44.000.754,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio 3\Project3.dproj=E:\Delphi\studio\Projects\Project3.dproj</Transaction>
->>>>>>> 96386e712bd4da1826cf9aa3b77c5046bd9dd469
-  </Transactions>
-</BorlandProject>
+<BorlandProject/>

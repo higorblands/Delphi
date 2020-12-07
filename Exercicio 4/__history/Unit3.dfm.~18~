@@ -14,8 +14,8 @@ object Form3: TForm3
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
-    Left = 24
-    Top = 56
+    Left = 80
+    Top = 48
     Width = 75
     Height = 25
     Caption = 'Verde'
@@ -24,8 +24,8 @@ object Form3: TForm3
     OnMouseLeave = vermelho
   end
   object Button2: TButton
-    Left = 216
-    Top = 56
+    Left = 200
+    Top = 32
     Width = 75
     Height = 25
     Caption = 'Verde'
@@ -34,8 +34,8 @@ object Form3: TForm3
     OnMouseLeave = vermelho
   end
   object Button3: TButton
-    Left = 408
-    Top = 56
+    Left = 336
+    Top = 64
     Width = 75
     Height = 25
     Caption = 'Verde'
@@ -54,8 +54,8 @@ object Form3: TForm3
     OnMouseLeave = vermelho
   end
   object Edit2: TEdit
-    Left = 200
-    Top = 136
+    Left = 154
+    Top = 120
     Width = 121
     Height = 21
     TabOrder = 4
@@ -64,7 +64,7 @@ object Form3: TForm3
     OnMouseLeave = vermelho
   end
   object Edit3: TEdit
-    Left = 384
+    Left = 336
     Top = 136
     Width = 121
     Height = 21
