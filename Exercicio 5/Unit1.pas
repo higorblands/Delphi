@@ -82,8 +82,7 @@ begin
 
   while v1Cont < v1Regs do
   begin
-    v1texto := vu_vetor[v1Cont].Nome + '(' +
-      inttostr(vu_vetor[v1Cont].Idade) + ')';
+    v1texto := vu_vetor[v1Cont].Nome + ' | ' + inttostr(vu_vetor[v1Cont].Idade) + ' Anos ';
     ListBox1.items.Add(v1texto);
     v1Cont := v1Cont + 1;
   end;
