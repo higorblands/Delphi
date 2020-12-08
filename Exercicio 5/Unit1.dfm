@@ -14,8 +14,8 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
-    Left = 240
-    Top = 40
+    Left = 294
+    Top = 23
     Width = 75
     Height = 25
     Caption = 'Adicionar'
@@ -23,27 +23,36 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object ListBox1: TListBox
-    Left = 64
-    Top = 48
-    Width = 121
+    Left = 88
+    Top = 96
+    Width = 185
     Height = 97
     ItemHeight = 13
     TabOrder = 1
   end
   object edtNome: TEdit
-    Left = 216
-    Top = 79
+    Left = 8
+    Top = 25
     Width = 121
     Height = 21
     TabOrder = 2
     TextHint = 'Digite o nome'
   end
   object edtIdade: TEdit
-    Left = 216
-    Top = 112
+    Left = 152
+    Top = 25
     Width = 121
     Height = 21
     TabOrder = 3
     TextHint = 'Digite a idade'
+  end
+  object Button2: TButton
+    Left = 152
+    Top = 65
+    Width = 75
+    Height = 25
+    Caption = 'Olhar'
+    TabOrder = 4
+    OnClick = Button2Click
   end
 end
