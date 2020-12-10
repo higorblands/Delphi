@@ -92,10 +92,10 @@ type
     Memo1: TMemo;
     Memo2: TMemo;
     Button1: TButton;
-    OpenDialog1: TOpenDialog;
     Edit1: TEdit;
     Button2: TButton;
     procedure Button2Click(Sender: TObject);
+    function validar(a: string): boolean;
   private
     { Private declarations }
   public
@@ -111,12 +111,54 @@ implementation
 {$R *.dfm}
 
 procedure TForm1.Button2Click(Sender: TObject);
+var
+  name: string;
+  arquivo: textfile;
+  sLine: string;
+  i: integer;
 begin
- begin
-   if OpenDialog1.Execute = true then
-   Edit1.Clear;
-   Edit1.Text := OpenDialog1.FileName;
- end;
+  if (validar(Edit1.Text) = false) then
+  begin
+    ShowMessage('Verifique os campos, há algum campo vázio');
+  end
+  else
+  begin
+    i := 0;
+    name := (Edit1.Text + '.txt');
+    AssignFile(arquivo, name);
+    Reset(arquivo);
+    if FileExists(name) = true then
+    begin
+      while not eof(arquivo) do
+      begin
+        Readln(arquivo, sLine);
+         i := i + 1;
+      end;
+      // Rewrite(arquivo);
+      // Writeln(arquivo, 'hello');
+      // Writeln(arquivo, 'teste');
+      CloseFile(arquivo);
+      // Memo1.Lines.LoadFromFile(name);
+      // Memo2.Lines.Add(name);
+    end
+    else
+    begin
+      ShowMessage('O arquivo não existe.');
+    end;
+
+  end;
+end;
+
+function TForm1.validar(a: string): boolean;
+begin
+  if (a = '') then
+  begin
+    result := false;
+  end
+  else
+  begin
+    result := true;
+  end;
 end;
 
 end.

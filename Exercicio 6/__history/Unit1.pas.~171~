@@ -92,13 +92,15 @@ type
     Memo1: TMemo;
     Memo2: TMemo;
     Button1: TButton;
-    OpenDialog1: TOpenDialog;
-    procedure Button1Click(Sender: TObject);
+    Edit1: TEdit;
+    Button2: TButton;
+    procedure Button2Click(Sender: TObject);
+    function validar(a: string): boolean;
   private
     { Private declarations }
   public
     { Public declarations }
-    caminho: TextFile;
+
   end;
 
 var
@@ -108,21 +110,63 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.Button2Click(Sender: TObject);
 var
-  f: TextFile;
-  q: char;
-  t: string;
+  name: string;
+  arquivo: textfile;
+  sLine: string;
+  i,lines: integer;
 begin
-  if OpenDialog1.Execute = true then
+  if (validar(Edit1.Text) = false) then
   begin
-  AssignFile(f, OpenDialog1.FileName);
-  reset(F);
-    Readln(f,q);
+    ShowMessage('Verifique os campos, há algum campo vázio');
   end
   else
   begin
-    ShowMessage('Você não selecionou um arquivo !');
+    name := (Edit1.Text + '.txt');
+    AssignFile(arquivo, name);
+    Reset(arquivo);
+    i:=0;
+    if FileExists(name) = true then
+    begin
+
+      while not eof(arquivo) do
+      begin
+
+        lines:= Length(AssignFile(arquivo, name));
+        Readln(arquivo, sLine);
+        while i < lines do
+        begin
+          i := i + 1;
+        end;
+
+
+
+      end;
+      // Rewrite(arquivo);
+      // Writeln(arquivo, 'hello');
+      // Writeln(arquivo, 'teste');
+      // CloseFile(arquivo);
+      // Memo1.Lines.LoadFromFile(name);
+      // Memo2.Lines.Add(name);
+    end
+    else
+    begin
+      ShowMessage('O arquivo não existe.');
+    end;
+
+  end;
+end;
+
+function TForm1.validar(a: string): boolean;
+begin
+  if (a = '') then
+  begin
+    result := false;
+  end
+  else
+  begin
+    result := true;
   end;
 end;
 
