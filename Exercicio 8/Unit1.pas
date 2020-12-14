@@ -23,7 +23,7 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   arquivo, arquivocripto: TextFile;
   nameFile: string;
-  h, m: char;
+  h: char;
   ascii, i: integer;
 begin
   if (validar(Edit1.Text) = false) then
@@ -49,17 +49,11 @@ begin
       begin
         read(arquivo, h);
         ascii := ord(h);
-        if ascii < 266 then
+        if ascii > 266 then
         begin
-          m := char(ascii + 10);
-          Write(arquivocripto, m);
-        end
-        else
-        begin
-          ascii := ascii - 266;
-          m := char(ascii + 10);
-          Write(arquivocripto, m);
+         ascii := ascii - 266;
         end;
+        Write(arquivocripto, char(ascii + 10));
       end;
     end;
     closeFile(arquivo);
