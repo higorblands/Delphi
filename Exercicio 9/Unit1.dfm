@@ -13,62 +13,45 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Idade: TLabel
-    Left = 296
-    Top = 152
-    Width = 28
-    Height = 13
-    Caption = 'Idade'
-  end
-  object Peso: TLabel
-    Left = 384
-    Top = 152
-    Width = 23
-    Height = 13
-    Caption = 'Peso'
-  end
-  object Label3: TLabel
-    Left = 304
-    Top = 24
-    Width = 81
-    Height = 13
-    Caption = 'Nome do arquivo'
-  end
   object ListBox1: TListBox
     Left = 0
     Top = 0
-    Width = 249
+    Width = 233
     Height = 201
     ItemHeight = 13
     TabOrder = 0
   end
-  object age: TEdit
-    Left = 279
-    Top = 171
-    Width = 69
-    Height = 21
-    TabOrder = 1
-  end
-  object weight: TEdit
-    Left = 368
-    Top = 171
-    Width = 69
-    Height = 21
-    TabOrder = 2
-  end
-  object nameFile: TEdit
-    Left = 286
-    Top = 43
+  object Edit1: TEdit
+    Left = 280
+    Top = 48
     Width = 121
     Height = 21
+    TabOrder = 1
+    TextHint = 'Nome do arquivo'
+  end
+  object Edit2: TEdit
+    Left = 255
+    Top = 136
+    Width = 74
+    Height = 21
+    TabOrder = 2
+    TextHint = 'Idade'
+  end
+  object Edit3: TEdit
+    Left = 351
+    Top = 136
+    Width = 74
+    Height = 21
     TabOrder = 3
+    TextHint = 'Peso'
   end
   object Button1: TButton
-    Left = 310
-    Top = 70
+    Left = 296
+    Top = 75
     Width = 75
     Height = 25
     Caption = 'Verificar'
     TabOrder = 4
+    OnClick = Button1Click
   end
 end
