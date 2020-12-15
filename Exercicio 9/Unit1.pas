@@ -20,6 +20,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+
   end;
 
 var
@@ -32,8 +33,8 @@ implementation
 procedure TForm1.Button1Click(Sender: TObject);
 var
   arquivo: TextFile;
-  name, age, wei, nameFile, line: string;
-  i, value, size: integer;
+  sName, nameFile, line: string;
+  i,qtdregistro: integer;
 
 begin
   if (validar(Edit1.Text) = false) then
@@ -42,14 +43,21 @@ begin
   end
   else
   begin
+  i:=0;
     nameFile := Edit1.Text + '.txt';
     AssignFile(arquivo, nameFile);
     Reset(arquivo);
     while not Eof(arquivo) do
     begin
-      Readln(arquivo, line);
-      ListBox1.Items.Add(line);
-    end;
+      // Pegar cada linha do nosso arquivo e colocar em nossa variável string
+      Readln(arquivo, line);// line := AADALGISA CARNEIRO FURTADO DOS SANTOS|9|36|//
+      i := i+1;
+      //Percorrer a linha identificar o pipe guardar o nome,
+      //identificar o pipe guardar idade e
+      //identificar o pipe guardar peso
+      // Guardar os valores nome, idade e peso em um vetor.
+      // Ao clicar no item exibir a idade e peso nos Edit
+    end; // Fim do While
     closeFile(arquivo);
   end;
 end;
