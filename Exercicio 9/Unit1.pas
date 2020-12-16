@@ -24,14 +24,13 @@ type
     procedure adicionarAoVetor(inNome, inIdade, inPeso: string);
     function select(funcFile: string): string;
     procedure filter(line: string);
-
+    procedure ListBox1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   var
     vu_vetor: array of TPessoas;
-
   end;
 
 var
@@ -54,8 +53,8 @@ end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
-   nameFile: string;
-
+  v1texto, nameFile: string;
+  v1Cont, v1Regs: integer;
 begin
   if (validar(Edit1.Text) = false) then
   begin
@@ -65,34 +64,60 @@ begin
   begin
     nameFile := Edit1.Text;
     select(nameFile);
+    v1Cont := 0;
+    v1Regs := Length(vu_vetor);
+    ListBox1.items.Clear;
+    while v1Cont < v1Regs do
+    begin
+      v1texto := vu_vetor[v1Cont].Nome;
+      ListBox1.items.Add(v1texto);
+      v1Cont := v1Cont + 1;
+    end;
   end;
 end;
 
 procedure TForm1.filter(line: string);
 var
-  arquivo: TextFile;
-  pipe,sChar, nameFile, sNome,sIdade,sPeso: string;
-  i: integer;
+  auxV, sChar, sNome, sIdade, sPeso: string;
+  qtdPipe: integer;
 begin
+  qtdPipe := 0;
   // Pegar cada linha do nosso arquivo e colocar em nossa variável string
   // line := ZUM|8|24|//
   // Percorrer a linha e identificar o |
+  // C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 9\Win32\Debug\alunos.txt
   for sChar in line do
   begin
     if sChar = '|' then
     begin
-    pipe := sChar;
+      qtdPipe := qtdPipe + 1;
+      if qtdPipe = 1 then
+      begin
+        sNome := auxV;
+      end;
+      if qtdPipe = 2 then
+      begin
+        sIdade := auxV;
+      end;
+      if qtdPipe = 3 then
+      begin
+        sPeso := auxV;
+      end;
+      auxV := '';
     end
     else
     begin
-       sNome := sNome + sChar;
-       sIdade := sIdade + sChar;
-       sPeso := sPeso + sChar;
+      auxV := auxV + sChar;
     end;
   end;
-  adicionarAoVetor(sNome,sIdade,sPeso);
+  adicionarAoVetor(sNome, sIdade, sPeso);
 end;
 
+procedure TForm1.ListBox1Click(Sender: TObject);
+begin
+  age.Text := vu_vetor[ListBox1.ItemIndex].idade;
+  weight.Text := vu_vetor[ListBox1.ItemIndex].peso;
+end;
 function TForm1.select(funcFile: string): string;
 var
   userFile: TextFile;
@@ -107,7 +132,6 @@ begin
   end;
   Readln(userFile, s);
   filter(s);
-
   closefile(userFile);
 end;
 
