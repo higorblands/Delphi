@@ -82,6 +82,9 @@ begin
     if sChar = '|' then
     begin
     pipe := sChar;
+    sNome := sNome - sChar;
+    sIdade := sIdade - sChar;
+    sPeso := sPeso - sChar;
     end
     else
     begin

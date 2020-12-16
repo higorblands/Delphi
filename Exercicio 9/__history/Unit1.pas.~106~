@@ -71,7 +71,7 @@ end;
 procedure TForm1.filter(line: string);
 var
   arquivo: TextFile;
-  pipe,sChar, nameFile, sNome,sIdade,sPeso: string;
+  sChar, nameFile, sNome,sIdade,sPeso: string;
   i: integer;
 begin
   // Pegar cada linha do nosso arquivo e colocar em nossa variável string
@@ -81,7 +81,7 @@ begin
   begin
     if sChar = '|' then
     begin
-    pipe := sChar;
+    sChar := ' ';
     end
     else
     begin
