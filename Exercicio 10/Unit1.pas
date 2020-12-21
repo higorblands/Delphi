@@ -26,8 +26,7 @@ type
 
   var
     matriz: array of array of string; // Matriz para armazenar os valores
-    temp: array of string;     //Lá na frente vamos entender o uso
-    mLine, mColumn, h, b: integer;     // Linhas e colunas do vetor
+    mLine, h: integer; // Linhas e colunas do vetor
   public
     { Public declarations }
   end;
@@ -39,22 +38,19 @@ implementation
 
 {$R *.dfm}
 
-// E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio 10\Win32\Debug\alunos fixos.txt
+// C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 10\Win32\Debug\alunos fixos.txt
 procedure TForm1.Button1Click(Sender: TObject);
 var
 
   i: integer;
 begin
   mLine := 0;
-  mColumn := 0;
-  select(fileName.Text);  // Acessa o arquivo através de uma função
-  for i := 0 to (mLine - 1) do
-  begin
-    ListBox1.Items.Add(matriz[i, 0]);
-  end;
+  select(fileName.Text); // Acessa o arquivo através de uma função
 end;
 
-procedure TForm1.filter(line: string); // Filtrando o arquivo ( espaço e caracteres )
+// Filtrando o arquivo ( espaço e caracteres )
+procedure TForm1.filter(line: string);
+
 var
   size, i, c, clear: integer;
   linetemp, linefinal: string;
@@ -62,67 +58,53 @@ begin
   h := 0;
   linetemp := '';
   linefinal := '';
-  size := Length(line);  // Passando a quantidade de caracteres para a variavel SIZE
-  for i := 1 to size do // Loop de 1 até o tamanho de SIZE, aqui estamos falando de quantidade e não posição de vetor
+  size := Length(line);
+  // Passando a quantidade de caracteres para a variavel SIZE
+  for i := 1 to size do
+  // Loop de 1 até o tamanho de SIZE, aqui estamos falando de quantidade e não posição de vetor
   begin
-    SetLength(matriz, mLine + 1);  // Definindo tamanho das linhas da matriz
-    linetemp := linetemp + line[i];    // Comentar
-    if (Length(linetemp) = 100) then
+    SetLength(matriz, mLine + 1); // Definindo tamanho das linhas da matriz
+    linetemp := linetemp + line[i]; // Comentar
+    if (i = 100) then
     begin
-      linefinal := trim(linetemp); // Limpando os zereos
-      SetLength(matriz[mLine], h + 1); // Definindo o tamanho da matriz
-      SetLength(temp, h + 1); // Definindo o tamanho do vetor TEMPO
-      temp[h] := linefinal; // Vetor TEMPORARIO recebe na posição H o conteudo limpo do NOME
-      linefinal := '';    // Limpando a variável
-      h := h + 1;     // Acrescentando mais um ao contador ( Posição para o vetor TEMP )
+      h := h + 1;// Acrescentando mais um ao contador ( Posição para o vetor TEMP )
+      linefinal := trim(linetemp); // removes blank and control characters
+      SetLength(matriz[mLine], h); // Definindo o tamanho da matriz
+      matriz[mLine,h - 1] := linefinal;
+      ListBox1.Items.Add(linefinal);
+      linefinal := ''; // Limpando a variável
+      linetemp := '';
     end;
 
-    if (Length(linetemp) = 103) then
+    if (i = 103) then
     begin
-      for c := 101 to 103 do   // Percorrendo da posição 101 até 103
-      begin
-        linefinal := linefinal + linetemp[c];   // lineFinal recebe o conteudo do valor percorrido
-      end;
-      clear := StrToInt(linefinal); // Variavel auxiliar recebe o conteudo de lineFinal  removendo os zeros a esquerda
-      linefinal := IntToStr(clear);
-      SetLength(matriz[mLine], h + 1);
-      SetLength(temp, h + 1);// Crescendo uma posição no vetor
-      temp[h] := linefinal; // Vetor TEMPORARIO recebe na posição H o conteudo limpo da Idade
-      linefinal := '';
       h := h + 1;
-    end;
-
-    if (Length(linetemp) = 108) then
-    begin
-      for c := 104 to 108 do
-      begin
-        linefinal := linefinal + linetemp[c];
-      end;
+      linefinal := linetemp; // lineFinal recebe o conteudo do valor percorrido
       clear := StrToInt(linefinal);
       linefinal := IntToStr(clear);
-      SetLength(matriz[mLine], h + 1);
-      SetLength(temp, h + 1);
-      temp[h] := linefinal;
+      SetLength(matriz[mLine], h);
+      matriz[mLine,h - 1] := linefinal;
       linefinal := '';
-      h := h + 1;
+      linetemp := '';
     end;
-
-    b := h;
-  end;
-
-  for c := 0 to b - 1 do    // De 0 até a quantidade de B que é a quantidade de valores guardados no vetor TEMPO
-  begin
-    matriz[mLine, c] := temp[c];  // Preenchendo a matriz
+    if (i = 108) then
+    begin
+      h := h + 1;
+      linefinal := linetemp;
+      clear := StrToInt(linefinal);
+      linefinal := IntToStr(clear);
+      SetLength(matriz[mLine], h);
+      matriz[mLine,h - 1] := linefinal;
+      linefinal := '';
+      linetemp := '';
+    end;
   end;
 end;
 
 procedure TForm1.ListBox1Click(Sender: TObject);
-var
-  i: integer;
 begin
-  i := ListBox1.itemindex;
-  age.Text := matriz[i, 1];
-  weight.Text := matriz[i, 2];
+  age.Text := matriz[ListBox1.itemindex, 1];
+  weight.Text := matriz[ListBox1.itemindex, 2];
 end;
 
 function TForm1.select(funcFile: string): string;
@@ -134,11 +116,10 @@ begin
   reset(userFile);
   while NOT EOF(userFile) do
   begin
-    readLn(userFile, sLine);    // Lê a linha no arquivo e salva em "sLine"
+    readLn(userFile, sLine); // Lê a linha no arquivo e salva em "sLine"
     filter(sLine); // Passa para a procedure FILTER o conteúdo de "sLine"
     mLine := mLine + 1; // Contando a quantidade de linhas do arquivo
   end;
-
   closefile(userFile);
 end;
 

@@ -60,7 +60,7 @@ object Form1: TForm1
     Top = 362
     Width = 75
     Height = 25
-    Caption = 'Button1'
+    Caption = 'Verificar'
     TabOrder = 3
     OnClick = Button1Click
   end
