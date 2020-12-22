@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UPoo;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UPoo, Client.Classe;
 
 type
   TFMain = class(TForm)
@@ -25,10 +25,10 @@ implementation
 
 procedure TFMain.Button1Click(Sender: TObject);
 var
-Higor,Mymy : TPerson;
+Higor,Mymy : TClient;
 begin
-Higor := TPerson.Create;
-Mymy := TPerson.Create;
+Higor := TClient.Create;
+Mymy := TClient.Create;
 try
    Higor.Name := ('Higor');
    Higor.Birthday := ('01/12/1996');

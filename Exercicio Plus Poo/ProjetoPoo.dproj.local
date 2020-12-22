@@ -2,11 +2,13 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2020/11/26 11:53:57.000.067,=E:\Delphi\studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/12/21 19:40:22.056,=E:\Delphi\studio\Projects\Unit3.pas</Transaction>
-    <Transaction>2020/12/21 19:41:53.278,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\UMain.pas=E:\Delphi\studio\Projects\Unit3.pas</Transaction>
-    <Transaction>2020/12/21 19:41:53.278,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\UMain.dfm=E:\Delphi\studio\Projects\Unit3.dfm</Transaction>
-    <Transaction>2020/12/21 19:42:00.289,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\ProjetoPoo.dproj=E:\Delphi\studio\Projects\Project3.dproj</Transaction>
-    <Transaction>2020/12/21 19:44:03.696,=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\Unit1.pas</Transaction>
-    <Transaction>2020/12/21 19:44:16.782,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\UPoo.pas=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\Unit1.pas</Transaction>
+    <Transaction>2020/12/21 19:40:22.000.056,=E:\Delphi\studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/12/21 19:41:53.000.278,E:\Delphi\studio\Projects\Unit3.dfm=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\UMain.dfm</Transaction>
+    <Transaction>2020/12/21 19:41:53.000.278,E:\Delphi\studio\Projects\Unit3.pas=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\UMain.pas</Transaction>
+    <Transaction>2020/12/21 19:42:00.000.289,E:\Delphi\studio\Projects\Project3.dproj=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\ProjetoPoo.dproj</Transaction>
+    <Transaction>2020/12/21 19:44:03.000.696,=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\Unit1.pas</Transaction>
+    <Transaction>2020/12/21 19:44:16.000.782,E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\Unit1.pas=E:\Delphi\studio\Projects\Exercicio\Nivel 00\Delphi-Echo\Exercicio Plus Poo\UPoo.pas</Transaction>
+    <Transaction>2020/12/22 09:26:46.793,=C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio Plus Poo\Unit1.pas</Transaction>
+    <Transaction>2020/12/22 09:29:49.264,C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio Plus Poo\client.classe.pas=C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio Plus Poo\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

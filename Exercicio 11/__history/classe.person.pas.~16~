@@ -1,0 +1,73 @@
+unit classe.person;
+
+interface
+
+uses system.sysutils, classe.client, classe.saler,classe.person;
+
+type
+  TPerson = Class
+  public
+    Name: String;
+    Birthday: String;
+    function Age: Integer;
+    function Check: boolean; virtual;
+
+  var
+    dayPayment, Adress: string;
+  private
+  End;
+
+  TClient = class(TPerson)
+  protected
+    function Check: boolean; override;
+  end;
+
+  TSaler = class(TPerson)
+  protected
+    function Check: boolean; override;
+  end;
+
+implementation
+
+function TPerson.Age: Integer;
+begin
+  Result := Trunc((now - StrToDate(Birthday)) / 365.25)
+end;
+
+function TPerson.Check: boolean;
+begin
+  if (name <> '') AND (length(name) <= 50) AND (IntToStr(Age) <> '') AND
+    (0 < Age) AND (Age < 130) then
+  begin
+    Result := True;
+  end
+  else
+  begin
+    Result := False;
+  end;
+end;
+
+{ TClient }
+
+function TClient.Check: boolean;
+begin
+  if inherited then
+  begin
+    if (dayPayment <> '') AND (StrToInt(dayPayment) >= 1) AND
+      (StrToInt(dayPayment) <= 31) AND (Adress <> '') AND (length(Adress) <= 200)
+    then
+    begin
+      Result := True;
+    end
+    else
+    begin
+      Result := False;
+    end;
+  end
+  else
+  begin
+    Result := False;
+  end;
+end;
+
+end.

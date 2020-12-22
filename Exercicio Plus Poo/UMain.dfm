@@ -2,8 +2,8 @@ object FMain: TFMain
   Left = 0
   Top = 0
   Caption = 'Principal'
-  ClientHeight = 598
-  ClientWidth = 905
+  ClientHeight = 477
+  ClientWidth = 617
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,8 +14,8 @@ object FMain: TFMain
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
-    Left = 376
-    Top = 280
+    Left = 280
+    Top = 216
     Width = 75
     Height = 25
     Caption = 'Ver'

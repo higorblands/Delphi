@@ -12,6 +12,7 @@ type
    Birthday : String;
    function Age : Integer;
 
+
   end;
 implementation
 

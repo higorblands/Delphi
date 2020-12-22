@@ -1,0 +1,17 @@
+unit classe.client;
+
+interface
+
+uses system.sysutils, classe.person;
+
+type
+  TClient = class(TPerson)
+  public
+  private
+    dayPayment: Integer;
+    Adress: String;
+  end;
+
+implementation
+
+end.

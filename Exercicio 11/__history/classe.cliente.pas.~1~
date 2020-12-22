@@ -1,0 +1,13 @@
+unit classe.cliente;
+
+interface
+uses system.sysutils,Client.Classe;
+
+type
+TCliente = class(TPerson)
+
+end;
+
+implementation
+
+end.
