@@ -1,0 +1,13 @@
+unit UPoo;
+
+interface
+
+type
+  TPessoas = class(TObject)
+  private
+   Age : Integer;
+  public
+   Name : String;
+  end;
+implementation
+end.

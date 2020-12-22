@@ -1,0 +1,20 @@
+unit UPoo;
+
+interface
+
+type
+  TPerson = class(TObject)
+  private
+
+  public
+   Name : String;
+   function Age : Integer;
+
+  end;
+implementation
+
+function TPerson.Age : Integer;
+begin
+
+end;
+end.

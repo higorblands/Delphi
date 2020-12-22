@@ -1,0 +1,22 @@
+unit UPoo;
+
+interface
+
+type
+  TPerson = class(TObject)
+  private
+
+  public
+   Name : String;
+   Birthday : String;
+   function Age : Integer;
+
+  end;
+implementation
+
+function TPerson.Age : Integer;
+begin
+Result := Trunc((now - StrToDate(Birthday))/365.25)
+
+end;
+end.
