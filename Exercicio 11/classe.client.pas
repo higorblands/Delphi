@@ -1,6 +1,6 @@
 unit classe.client;
 interface
-uses system.sysutils, classe.person;
+uses system.classes, system.SysUtils, classe.person;
 type
   TClient = class(TPerson)
   public

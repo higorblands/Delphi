@@ -1,6 +1,6 @@
 unit classe.person;
 interface
-uses system.sysutils;
+uses system.classes, system.SysUtils;
 type
   TPerson = Class
   public
