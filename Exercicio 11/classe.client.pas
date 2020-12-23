@@ -3,6 +3,8 @@ interface
 uses system.classes, system.SysUtils, classe.person;
 type
   TClient = class(TPerson)
+  protected
+  function save : boolean; override;
   public
     function Check: boolean; override;
   private
@@ -30,4 +32,11 @@ begin
     Result := False;
   end;
 end;
+function TClient.save: boolean;
+begin
+  inherited;
+  SQL[length(SQL)-1] := 'CLIENTE:' + SQL[length(SQL)-1] + ' | Dia: ' + IntToStr(dayPayment) + ' | Endereço: ' + Adress;
+  result := True;
+end;
+
 end.

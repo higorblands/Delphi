@@ -7,6 +7,8 @@ uses classe.person,system.classes, system.SysUtils;
 type
 
   TSaler = class(TPerson)
+  protected
+  function save : boolean; override;
   public
     Percentage: real;
     SalerType: Char;
@@ -39,4 +41,11 @@ begin
     result := False;
   end;
 end;
+function TSaler.save: boolean;
+begin
+ inherited;
+  SQL[length(SQL)-1] := 'VENDEDOR: ' + SQL[length(SQL)-1] + ' | Comissão: ' + CurrToStr(Commission) + ' | Tipo de vendedor: ' + TypeSaler;
+  result := True;
+end;
+
 end.
