@@ -7,12 +7,13 @@ uses system.classes, system.SysUtils, classe.person;
 type
   TClient = class(TPerson)
   protected
-    function save: boolean; override;
-  public
     function Check: boolean; override;
+    function doSQL: boolean; override;
+  public
+  dayPayment: Integer;
+  Adress: String;
   private
-    dayPayment: Integer;
-    Adress: String;
+
   end;
 
 implementation
@@ -38,11 +39,11 @@ begin
   end;
 end;
 
-function TClient.save: boolean;
+function TClient.doSQL: boolean;
 begin
+  Result := False;
   inherited;
-  SQL[length(SQL) - 1] := 'CLIENTE:' + SQL[length(SQL) - 1] + ' | Dia: ' +
-    IntToStr(dayPayment) + ' | Endereço: ' + Adress;
+  SQL[length(SQL) - 1] := 'CLIENTE:' + SQL[length(SQL) - 1] + ' | Dia: ' + IntToStr(dayPayment) + ' | Endereço: ' + Adress;
   Result := True;
 end;
 

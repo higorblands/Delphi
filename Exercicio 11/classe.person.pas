@@ -7,23 +7,16 @@ uses system.classes, system.SysUtils;
 type
   TPerson = Class
   protected
-    function save: boolean; virtual;
-
+    function Check: boolean; virtual;
+    function doSQL: boolean; virtual;
   public
     Name: String;
-    Birthday: String;
+    Age : Integer;
     SQL: array of string;
-    function Done: boolean;
-    function Age: Integer;
-    function Check: boolean; virtual;
+    function save: boolean;
   End;
 
 implementation
-
-function TPerson.Age: Integer;
-begin
-  Result := Trunc((now - StrToDate(Birthday)) / 365.25)
-end;
 
 function TPerson.Check: boolean;
 begin
@@ -38,24 +31,24 @@ begin
   end;
 end;
 
-function TPerson.Done: boolean;
+function TPerson.doSQL: boolean;
 begin
-  if Check then
-  begin
-    Result := save;
-  end
-  else
-  begin
-    Result := False;
-  end;
-
+  Result := False;
+  setLength(SQL, length(SQL) + 1);
+  SQL[length(SQL) - 1] := 'Nome: ' + name + ' | Idade: ' + IntToStr(Age);
+  Result := True;
 end;
 
 function TPerson.save: boolean;
 begin
-  setLength(SQL, length(SQL) + 1);
-  SQL[length(SQL) - 1] := 'Nome: ' + name + ' | Idade: ' + IntToStr(Age);
-  Result := True;
+  Result := False;
+  if Check then
+  begin
+    if doSQL then
+    begin
+      Result := True;
+    end;
+  end;
 end;
 
 end.

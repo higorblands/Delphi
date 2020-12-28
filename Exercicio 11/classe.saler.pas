@@ -2,32 +2,29 @@ unit classe.saler;
 
 interface
 
-uses classe.person,system.classes, system.SysUtils;
+uses classe.person, system.classes, system.SysUtils;
 
 type
-
   TSaler = class(TPerson)
   protected
-  function save : boolean; override;
+    function doSQL: boolean; override;
+    function Check: boolean; override;
   public
     Percentage: real;
-    SalerType: Char;
-    function Check: boolean; override;
+    TypeSaler: String;
   private
-  Commission : currency;
-  TypeSaler : Char;
+    Commission: currency;
 
   end;
 
 implementation
 
 { TSaler }
-
 function TSaler.Check: boolean;
 begin
   if inherited then
   begin
-    if (Commission > 0) AND ((TypeSaler = 'i' ) OR (TypeSaler = 'e')) then
+    if (Commission > 0) AND ((TypeSaler = 'i') OR (TypeSaler = 'e')) then
     begin
       result := True;
     end
@@ -41,10 +38,13 @@ begin
     result := False;
   end;
 end;
-function TSaler.save: boolean;
+
+function TSaler.doSQL: boolean;
 begin
- inherited;
-  SQL[length(SQL)-1] := 'VENDEDOR: ' + SQL[length(SQL)-1] + ' | Comissão: ' + CurrToStr(Commission) + ' | Tipo de vendedor: ' + TypeSaler;
+  result := False;
+  inherited;
+  SQL[length(SQL) - 1] := 'VENDEDOR: ' + SQL[length(SQL) - 1] + ' | Comissão: '
+    + CurrToStr(Commission) + ' | Tipo de vendedor: ' + TypeSaler;
   result := True;
 end;
 
