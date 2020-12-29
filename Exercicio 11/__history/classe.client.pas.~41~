@@ -43,7 +43,7 @@ function TClient.doSQL(SQL: TStringList): boolean;
 begin
   Result := False;
   inherited;
-  SQL.Add(' | Dia: ' + (IntToStr(dayPayment)) + ' | Endereço: ' + Adress);
+  SQL.Add = ('Cliente:' + ' | Dia: ' + (IntToStr(dayPayment)) + ' | Endereço: ' + Adress);
   Result := True;
 end;
 

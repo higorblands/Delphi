@@ -7,7 +7,7 @@ uses classe.person, system.classes, system.SysUtils;
 type
   TSaler = class(TPerson)
   protected
-    function doSQL(SQL: TStringList): boolean; override;
+    function doSQL: boolean; override;
     function Check: boolean; override;
   public
     Percentage: real;
@@ -39,12 +39,12 @@ begin
   end;
 end;
 
-function TSaler.doSQL(SQL: TStringList): boolean;
+function TSaler.doSQL: boolean;
 begin
-  Result := False;
+  result := False;
   inherited;
-  SQL.Add(' | Comissão: ' + CurrToStr(Commission) + ' | Tipo de vendedor: ' +
-  TypeSaler);
+  SQL[length(SQL) - 1] := 'Vendedor: ' + SQL[length(SQL) - 1] + ' | Comissão: '
+    + CurrToStr(Commission) + ' | Tipo de vendedor: ' + TypeSaler;
   result := True;
 end;
 

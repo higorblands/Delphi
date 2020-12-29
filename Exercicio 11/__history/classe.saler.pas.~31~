@@ -41,10 +41,10 @@ end;
 
 function TSaler.doSQL(SQL: TStringList): boolean;
 begin
-  Result := False;
+  result := False;
   inherited;
-  SQL.Add(' | Comissão: ' + CurrToStr(Commission) + ' | Tipo de vendedor: ' +
-  TypeSaler);
+  SQL.Add(' | Comissão: ' +
+    CurrToStr(Commission) + ' | Tipo de vendedor: ' + TypeSaler);
   result := True;
 end;
 

@@ -53,7 +53,7 @@ begin
     ObjClient.dayPayment := StrToInt(edtPaymentDay.Text);
     ObjClient.Adress := edtAdress.Text;
     ObjClient.save;
-    SQL.Add(ObjClient.ToString);
+    SQL.Add(ObjClient);
     ShowMessage('Cliente ' + edtName.Text + ' cadastrado com sucesso !');
     edtName.Clear;
     edtAge.Clear;
@@ -77,7 +77,7 @@ begin
     ObjSaler.Percentage := StrToFloat(edtCommission.Text);
     ObjSaler.TypeSaler := edtType.Text;
     ObjSaler.save;
-    SQL.Add(ObjSaler.ToString);
+    SQL.Add(ObjSaler);
     ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
     edtName.Clear;
     edtAge.Clear;

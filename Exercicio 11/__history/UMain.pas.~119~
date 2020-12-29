@@ -30,7 +30,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-     SQL: TStringList;
 
   end;
 
@@ -44,6 +43,7 @@ implementation
 procedure TForm1.btSaveClientClick(Sender: TObject);
 var
   ObjClient: TClient;
+  SQL: TStringList;
 begin
   ObjClient := TClient.Create;
   SQL := TStringList.Create;
@@ -53,7 +53,6 @@ begin
     ObjClient.dayPayment := StrToInt(edtPaymentDay.Text);
     ObjClient.Adress := edtAdress.Text;
     ObjClient.save;
-    SQL.Add(ObjClient.ToString);
     ShowMessage('Cliente ' + edtName.Text + ' cadastrado com sucesso !');
     edtName.Clear;
     edtAge.Clear;
@@ -61,13 +60,13 @@ begin
     edtAdress.Clear;
   finally
     ObjClient.Free;
-    SQL.Free
   end;
 end;
 
 procedure TForm1.btSaveSalerClick(Sender: TObject);
 var
   ObjSaler: TSaler;
+  SQL: TStringList;
 begin
   ObjSaler := TSaler.Create;
   SQL := TStringList.Create;
@@ -77,7 +76,7 @@ begin
     ObjSaler.Percentage := StrToFloat(edtCommission.Text);
     ObjSaler.TypeSaler := edtType.Text;
     ObjSaler.save;
-    SQL.Add(ObjSaler.ToString);
+    SQL(ObjSaler);
     ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
     edtName.Clear;
     edtAge.Clear;
@@ -85,12 +84,14 @@ begin
     edtType.Clear;
   finally
     ObjSaler.Free;
-    SQL.Free
   end;
 end;
+
 procedure TForm1.btSeeClick(Sender: TObject);
+
 begin
 ListBox1.Items.Add(SQL.Text);
 end;
+
 
 end.

@@ -8,7 +8,7 @@ type
   TClient = class(TPerson)
   protected
     function Check: boolean; override;
-    function doSQL(SQL : TStringList): boolean; override;
+    function doSQL: boolean; override;
   public
   dayPayment: Integer;
   Adress: String;
@@ -39,11 +39,11 @@ begin
   end;
 end;
 
-function TClient.doSQL(SQL: TStringList): boolean;
+function TClient.doSQL: boolean;
 begin
   Result := False;
   inherited;
-  SQL.Add(' | Dia: ' + (IntToStr(dayPayment)) + ' | Endereço: ' + Adress);
+  SQL[length(SQL) - 1] := 'Cliente:' + SQL[length(SQL) - 1] + ' | Dia: ' + IntToStr(dayPayment) + ' | Endereço: ' + Adress;
   Result := True;
 end;
 

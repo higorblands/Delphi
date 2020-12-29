@@ -32,7 +32,7 @@ end;
 
 function TPerson.doSQL(SQL: TStringList): boolean;
 begin
-  Result := False;
+  //Result := False;
   SQL.Add('Nome: ' + name + ' | Idade: ' + IntToStr(Age));
   Result := True;
 end;

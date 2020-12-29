@@ -77,7 +77,7 @@ begin
     ObjSaler.Percentage := StrToFloat(edtCommission.Text);
     ObjSaler.TypeSaler := edtType.Text;
     ObjSaler.save;
-    SQL.Add(ObjSaler.ToString);
+    SQL.Add(ObjSaler);
     ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
     edtName.Clear;
     edtAge.Clear;
