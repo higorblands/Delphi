@@ -1,0 +1,26 @@
+unit UPerson;
+interface
+uses system.classes, system.SysUtils;
+type
+  TPessoa = Class
+  protected
+  public
+  Name : String;
+  Age : String;
+  function doSQL(SQL: TStringList): boolean; virtual;
+  var
+doSqlDone : String;
+  End;
+implementation
+
+{ TPessoa }
+
+function TPessoa.doSQL(SQL: TStringList): boolean;
+
+begin
+  Result := False;
+  doSqlDone := ('Nome: ' + name + ' | Idade: ' + IntToStr(Age));
+  Result := True;
+end;
+
+end.

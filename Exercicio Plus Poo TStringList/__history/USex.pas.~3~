@@ -1,0 +1,33 @@
+unit USex;
+
+interface
+
+uses Uperson, system.classes, system.SysUtils;
+
+Type
+  TMulher = Class(TPessoa)
+  protected
+    tipo: string;
+    function doSQL(SQL: TStringList): boolean; override;
+  private
+  public
+  End;
+
+implementation
+
+{ TMulher }
+
+function TMulher.doSQL(SQL: TStringList): boolean;
+begin
+  if inherited then
+  begin
+    result := True;
+    SQL.Add(doSqlDone + tipo);
+  end
+  else
+  begin
+    result := False;
+  end;
+end;
+
+end.

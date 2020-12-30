@@ -10,10 +10,11 @@ type
     function doSQL(SQL: TStringList): boolean; override;
     function Check: boolean; override;
   public
-    Percentage: real;
-    TypeSaler: String;
-  private
     Commission: currency;
+    TypeSaler: String;
+
+  private
+
 
   end;
 
@@ -42,9 +43,8 @@ end;
 function TSaler.doSQL(SQL: TStringList): boolean;
 begin
   Result := False;
+  aux := ' | Comissão: ' + CurrToStr(Commission) + ' | Tipo de vendedor: ' + TypeSaler;
   inherited;
-  SQL.Add(' | Comissão: ' + CurrToStr(Commission) + ' | Tipo de vendedor: ' +
-  TypeSaler);
   result := True;
 end;
 

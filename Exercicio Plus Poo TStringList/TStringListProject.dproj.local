@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/12/10 09:24:21.000.166,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/16 11:42:19.000.943,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/17 08:06:54.000.017,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/30 09:18:58.000.113,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/30 09:19:33.000.083,C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio Plus Poo TStringList\UTStringList.pas=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/30 09:19:33.000.083,C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio Plus Poo TStringList\UTStringList.dfm=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/12/30 09:19:45.000.409,C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio Plus Poo TStringList\TStringListProject.dproj=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

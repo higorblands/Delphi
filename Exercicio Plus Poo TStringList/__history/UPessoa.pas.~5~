@@ -1,0 +1,21 @@
+unit UPessoa;
+
+interface
+
+uses system.classes, system.SysUtils;
+
+type
+
+  TPessoa = Class
+
+  protected
+
+  public
+  Name : String;
+  Age : Integer;
+
+  End;
+
+implementation
+
+end.

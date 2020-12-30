@@ -1,0 +1,28 @@
+unit UMulher;
+
+interface
+uses Upessoa, system.classes, system.SysUtils;
+
+Type
+TMulher = Class
+  protected
+  tipo : string;
+  function doSQL(SQL: TStringList): boolean; override;
+  private
+  public
+End;
+
+implementation
+
+{ TMulher }
+
+function TMulher.doSQL(SQL: TStringList): boolean;
+begin
+  Result := False;
+  inherited;
+  SQL.Add(doSql);
+  doSqlDo
+  result := True;
+end;
+
+end.

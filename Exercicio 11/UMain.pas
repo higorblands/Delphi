@@ -20,12 +20,13 @@ type
     edtAdress: TEdit;
     edtCommission: TEdit;
     edtType: TEdit;
-    ListBox1: TListBox;
     btSaveSaler: TButton;
     btSee: TButton;
     procedure btSaveClientClick(Sender: TObject);
     procedure btSaveSalerClick(Sender: TObject);
     procedure btSeeClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,14 +47,12 @@ var
   ObjClient: TClient;
 begin
   ObjClient := TClient.Create;
-  SQL := TStringList.Create;
   try
     ObjClient.Name := edtName.Text;
     ObjClient.Age := StrToInt(edtAge.Text);
     ObjClient.dayPayment := StrToInt(edtPaymentDay.Text);
     ObjClient.Adress := edtAdress.Text;
-    ObjClient.save;
-    SQL.Add(ObjClient.ToString);
+    ObjClient.save(SQL);
     ShowMessage('Cliente ' + edtName.Text + ' cadastrado com sucesso !');
     edtName.Clear;
     edtAge.Clear;
@@ -61,7 +60,6 @@ begin
     edtAdress.Clear;
   finally
     ObjClient.Free;
-    SQL.Free
   end;
 end;
 
@@ -70,27 +68,42 @@ var
   ObjSaler: TSaler;
 begin
   ObjSaler := TSaler.Create;
-  SQL := TStringList.Create;
   try
     ObjSaler.Name := edtName.Text;
     ObjSaler.Age := StrToInt(edtAge.Text);
-    ObjSaler.Percentage := StrToFloat(edtCommission.Text);
+    ObjSaler.Commission := StrToFloat(edtCommission.Text);
     ObjSaler.TypeSaler := edtType.Text;
-    ObjSaler.save;
-    SQL.Add(ObjSaler.ToString);
-    ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
+    if ObjSaler.save(SQL) THEN
+    BEGIN
+      ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
+    END
+    else
+    BEGIN
+      showmessage('Erro');
+    END;
+
     edtName.Clear;
     edtAge.Clear;
     edtCommission.Clear;
     edtType.Clear;
   finally
     ObjSaler.Free;
-    SQL.Free
   end;
 end;
+
 procedure TForm1.btSeeClick(Sender: TObject);
 begin
-ListBox1.Items.Add(SQL.Text);
+ ShowMessage(SQL.Text);
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  SQL := TStringList.Create;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+ SQL.Free;
 end;
 
 end.

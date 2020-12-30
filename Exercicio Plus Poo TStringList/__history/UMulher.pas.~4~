@@ -1,0 +1,16 @@
+unit UMulher;
+
+interface
+uses Upessoa, system.classes, system.SysUtils;
+
+Type
+TMulher = Class
+  protected
+  tipo : string;
+  private
+  public
+End;
+
+implementation
+
+end.

@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 412
-  ClientWidth = 672
+  ClientHeight = 428
+  ClientWidth = 366
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,10 +11,12 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object edtName: TEdit
-    Left = 26
+    Left = 40
     Top = 93
     Width = 121
     Height = 21
@@ -22,7 +24,7 @@ object Form1: TForm1
     TextHint = 'Nome'
   end
   object edtAge: TEdit
-    Left = 186
+    Left = 200
     Top = 93
     Width = 125
     Height = 21
@@ -30,11 +32,11 @@ object Form1: TForm1
     TextHint = 'Idade'
   end
   object PageControl1: TPageControl
-    Left = 42
+    Left = 40
     Top = 136
     Width = 289
     Height = 193
-    ActivePage = TabSaler
+    ActivePage = TabClient
     TabOrder = 2
     object TabClient: TTabSheet
       Caption = 'Cliente'
@@ -84,8 +86,8 @@ object Form1: TForm1
         TextHint = 'Comiss'#227'o'
       end
       object btSaveSaler: TButton
-        Left = 94
-        Top = 126
+        Left = 96
+        Top = 118
         Width = 75
         Height = 25
         Caption = 'Cadastrar'
@@ -94,21 +96,13 @@ object Form1: TForm1
       end
     end
   end
-  object ListBox1: TListBox
-    Left = 376
-    Top = 160
-    Width = 265
-    Height = 169
-    ItemHeight = 13
-    TabOrder = 3
-  end
   object btSee: TButton
-    Left = 488
-    Top = 344
+    Left = 140
+    Top = 347
     Width = 75
     Height = 25
     Caption = 'Ver'
-    TabOrder = 4
+    TabOrder = 3
     OnClick = btSeeClick
   end
 end

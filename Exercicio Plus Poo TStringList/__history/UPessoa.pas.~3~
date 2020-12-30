@@ -1,0 +1,18 @@
+unit UPessoa;
+
+interface
+
+uses system.classes, system.SysUtils;
+
+type
+
+  TPessoa = Class
+
+  protected
+
+  public
+  End;
+
+implementation
+
+end.
