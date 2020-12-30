@@ -22,11 +22,11 @@ type
     edtType: TEdit;
     btSaveSaler: TButton;
     btSee: TButton;
-    Memo1: TMemo;
     procedure btSaveClientClick(Sender: TObject);
     procedure btSaveSalerClick(Sender: TObject);
     procedure btSeeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,8 +52,14 @@ begin
     ObjClient.Age := StrToInt(edtAge.Text);
     ObjClient.dayPayment := StrToInt(edtPaymentDay.Text);
     ObjClient.Adress := edtAdress.Text;
-    ObjClient.save(SQL);
+    if ObjClient.save(SQL) then
+    begin
     ShowMessage('Cliente ' + edtName.Text + ' cadastrado com sucesso !');
+    end
+    else
+    begin
+    ShowMessage('Erro ao cadastrar o Cliente.');
+    end;
     edtName.Clear;
     edtAge.Clear;
     edtPaymentDay.Clear;
@@ -73,7 +79,15 @@ begin
     ObjSaler.Age := StrToInt(edtAge.Text);
     ObjSaler.Commission := StrToFloat(edtCommission.Text);
     ObjSaler.TypeSaler := edtType.Text;
-    ObjSaler.save(SQL);
+    if ObjSaler.save(SQL) THEN
+    BEGIN
+      ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
+    END
+    else
+    BEGIN
+      showmessage('Erro ao cadastrar o Vendedor.');
+    END;
+
     edtName.Clear;
     edtAge.Clear;
     edtCommission.Clear;
@@ -85,20 +99,17 @@ end;
 
 procedure TForm1.btSeeClick(Sender: TObject);
 begin
- //ListBox1.Items.Add(SQL.Text);
- //ShowMessage(SQL.Text);
- Memo1.Lines.Add(SQL.Text);
+ ShowMessage(SQL.Text);
 end;
-
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-Memo1.Clear;
- try
-      SQL := TStringList.Create;
-  finally
-      SQL.Free;
-  end;
+  SQL := TStringList.Create;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+ SQL.Free;
 end;
 
 end.

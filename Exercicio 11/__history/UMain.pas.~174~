@@ -22,11 +22,11 @@ type
     edtType: TEdit;
     btSaveSaler: TButton;
     btSee: TButton;
-    Memo1: TMemo;
     procedure btSaveClientClick(Sender: TObject);
     procedure btSaveSalerClick(Sender: TObject);
     procedure btSeeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,7 +73,15 @@ begin
     ObjSaler.Age := StrToInt(edtAge.Text);
     ObjSaler.Commission := StrToFloat(edtCommission.Text);
     ObjSaler.TypeSaler := edtType.Text;
-    ObjSaler.save(SQL);
+    if ObjSaler.save(SQL) THEN
+    BEGIN
+      ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
+    END
+    else
+    BEGIN
+      showmessage('Erro');
+    END;
+
     edtName.Clear;
     edtAge.Clear;
     edtCommission.Clear;
@@ -85,18 +93,17 @@ end;
 
 procedure TForm1.btSeeClick(Sender: TObject);
 begin
- //ListBox1.Items.Add(SQL.Text);
  ShowMessage(SQL.Text);
 end;
 
-
 procedure TForm1.FormCreate(Sender: TObject);
 begin
- try
-      SQL := TStringList.Create;
-  finally
-      SQL.Free;
-  end;
+  SQL := TStringList.Create;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+ SQL.Free;
 end;
 
 end.

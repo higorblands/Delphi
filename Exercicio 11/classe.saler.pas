@@ -25,7 +25,7 @@ function TSaler.Check: boolean;
 begin
   if inherited then
   begin
-    if (Commission > 0) AND ((TypeSaler = 'i') OR (TypeSaler = 'e')) then
+    if (Commission > 0) AND ((TypeSaler = 'I') OR (TypeSaler = 'E')) then
     begin
       result := True;
     end

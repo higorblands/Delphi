@@ -52,8 +52,14 @@ begin
     ObjClient.Age := StrToInt(edtAge.Text);
     ObjClient.dayPayment := StrToInt(edtPaymentDay.Text);
     ObjClient.Adress := edtAdress.Text;
-    ObjClient.save(SQL);
+    if ObjClient.save(SQL) then
+    begin
     ShowMessage('Cliente ' + edtName.Text + ' cadastrado com sucesso !');
+    end
+    else
+    begin
+    ShowMessage('Erro ao cadastrar o Cliente.');
+    end;
     edtName.Clear;
     edtAge.Clear;
     edtPaymentDay.Clear;
@@ -72,14 +78,14 @@ begin
     ObjSaler.Name := edtName.Text;
     ObjSaler.Age := StrToInt(edtAge.Text);
     ObjSaler.Commission := StrToFloat(edtCommission.Text);
-    ObjSaler.TypeSaler := edtType.Text;
+    ObjSaler.TypeSaler := AnsiUpperCase(edtType.Text);
     if ObjSaler.save(SQL) THEN
     BEGIN
       ShowMessage('Vendedor ' + edtName.Text + ' cadastrado com sucesso !');
     END
     else
     BEGIN
-      showmessage('Erro');
+      showmessage('Erro ao cadastrar o Vendedor.');
     END;
 
     edtName.Clear;
