@@ -38,6 +38,7 @@ object FormMain: TFormMain
     Height = 25
     Caption = 'MOIP Sale'
     TabOrder = 2
+    OnClick = btnMOIPSaleClick
   end
   object btnOrderSale: TButton
     Left = 176

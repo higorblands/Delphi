@@ -13,6 +13,13 @@ object FormExternalOrder: TFormExternalOrder
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object LDAV: TLabel
+    Left = 32
+    Top = 152
+    Width = 47
+    Height = 13
+    Caption = 'Dav Code'
+  end
   object LExternalSalerName: TLabel
     Left = 304
     Top = 5
@@ -20,12 +27,14 @@ object FormExternalOrder: TFormExternalOrder
     Height = 13
     Caption = 'External Saler Name'
   end
-  object LDAV: TLabel
-    Left = 32
-    Top = 152
-    Width = 47
-    Height = 13
-    Caption = 'Dav Code'
+  object edtDav: TEdit
+    Left = 14
+    Top = 171
+    Width = 73
+    Height = 21
+    Alignment = taCenter
+    TabOrder = 0
+    TextHint = 'Dav Code'
   end
   object edtExternalSalerName: TEdit
     Left = 288
@@ -35,16 +44,7 @@ object FormExternalOrder: TFormExternalOrder
     Alignment = taCenter
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
-    TabOrder = 0
-    TextHint = 'Enter saler external name'
-  end
-  object edtDav: TEdit
-    Left = 14
-    Top = 171
-    Width = 73
-    Height = 21
-    Alignment = taCenter
     TabOrder = 1
-    TextHint = 'Dav Code'
+    TextHint = 'Enter saler external name'
   end
 end

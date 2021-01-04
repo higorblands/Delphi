@@ -12,8 +12,8 @@ type
     LDAV: TLabel;
     edtDav: TEdit;
   protected
-  function Check: boolean; override;
-  function save: boolean; override;
+    function Check: boolean; override;
+    function save: boolean; override;
   private
     { Private declarations }
   public
@@ -26,7 +26,6 @@ var
 implementation
 
 {$R *.dfm}
-
 { TFormOrderInternal }
 
 function TFormInternalOrder.Check: boolean;
@@ -50,11 +49,21 @@ end;
 
 function TFormInternalOrder.save: boolean;
 var
-data: TDateTime;
+  data: TDateTime;
 begin
-  data := Date;
-  inherited;
-  edtDav.Text := SQL[0, 0] + FormatDateTime('yyyymmdd', data);
-  clear;
+  if Check then
+  begin
+    data := Date;
+    inherited;
+    edtDav.Text := SQL[0, 0] + FormatDateTime('yyyymmdd', data);
+    result := True;
+  end
+  else
+  begin
+    Showmessage('Could not save internal sale ' + edtSaleNum.Text + '.');
+    result := False;
+  end;
+
 end;
+
 end.

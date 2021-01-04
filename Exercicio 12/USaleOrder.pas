@@ -23,7 +23,8 @@ type
     SQL: array of array of string;
     function Check: boolean; virtual;
     function Save: boolean; virtual;
-    function clear:boolean;virtual;
+    function clear: boolean; virtual;
+    function Alert: boolean;
   private
     { Private declarations }
   public
@@ -43,6 +44,7 @@ begin
   if Check then
   begin
     Save;
+    Alert;
   end
   else
   begin
@@ -65,16 +67,14 @@ begin
 
 end;
 
-
-
 function TFormSaleOrder.clear: boolean;
 begin
-    Result := False;
-    edtSaleNum.clear;
-    edtSalerName.clear;
-    edtSaleValue.clear;
-    edtClienteName.clear;
-    Result := True;
+  Result := False;
+  edtSaleNum.clear;
+  edtSalerName.clear;
+  edtSaleValue.clear;
+  edtClienteName.clear;
+  Result := True;
 end;
 
 function TFormSaleOrder.Save: boolean;
@@ -87,14 +87,22 @@ begin
     SQL[Length(SQL) - 1, 1] := edtSalerName.Text;
     SQL[Length(SQL) - 1, 2] := edtSaleValue.Text;
     SQL[Length(SQL) - 1, 3] := edtClienteName.Text;
-    Showmessage('Salvo com sucesso ! ');
     Result := True;
   end
   else
   begin
-    Showmessage('Não foi possível salvar ! ');
+    Showmessage('Could not save sale ' + edtSaleNum.Text + '.');
     Result := False;
   end;
+
+end;
+
+function TFormSaleOrder.alert: boolean;
+begin
+    Result := False;
+    Showmessage('Sale ' + edtSaleNum.Text + ' saved with success.');
+    Result := True;
+    clear;
 end;
 
 end.

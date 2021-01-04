@@ -14,7 +14,7 @@ object FormInternalOrder: TFormInternalOrder
   PixelsPerInch = 96
   TextHeight = 13
   object LDAV: TLabel
-    Left = 32
+    Left = 64
     Top = 152
     Width = 47
     Height = 13
@@ -23,7 +23,7 @@ object FormInternalOrder: TFormInternalOrder
   object edtDav: TEdit
     Left = 14
     Top = 171
-    Width = 73
+    Width = 147
     Height = 21
     Alignment = taCenter
     TabOrder = 0
