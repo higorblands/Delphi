@@ -1,0 +1,5 @@
+inherited FormVendaExterna: TFormVendaExterna
+  Caption = 'FormVendaExterna'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

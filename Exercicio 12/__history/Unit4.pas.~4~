@@ -1,0 +1,50 @@
+unit Unit4;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Unit2, Vcl.StdCtrls;
+
+type
+  TFormVendaExterna = class(TFormPedidoVenda)
+    Label5: TLabel;
+    EditNomeVendedorExterno: TEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    EditDAV: TEdit;
+    procedure BtnSalvarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormVendaExterna: TFormVendaExterna;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormVendaExterna.BtnSalvarClick(Sender: TObject);
+var
+data : TDateTime;
+nome: string;
+i : integer;
+begin
+  nome := '';
+  data := Date;
+  inherited;
+  if (EditNomeVendedorExterno.Text <> '') AND (Length(EditNomeVendedorExterno.Text) <=100) then
+  begin
+    for i := 1 to 3 do
+    begin
+      nome := nome + EditNomeVendedorExterno.Text[i];
+    end;
+
+    EditDAV.Text := database[0, 0] + nome + FormatDateTime('yyyymmdd', data);
+  end;
+end;
+
+end.

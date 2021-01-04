@@ -1,0 +1,34 @@
+unit Unit1;
+
+interface
+
+uses
+  Unit3,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TFormMenu = class(TForm)
+    BtnVInterna: TButton;
+    BtnVExterna: TButton;
+    BtnVMOIP: TButton;
+    procedure BtnVInternaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormMenu: TFormMenu;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormMenu.BtnVInternaClick(Sender: TObject);
+begin
+  FormVendaInterna.Show;
+end;
+
+end.
