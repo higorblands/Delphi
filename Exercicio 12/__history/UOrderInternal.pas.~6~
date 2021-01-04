@@ -1,0 +1,50 @@
+unit UOrderInternal;
+
+interface
+
+uses
+  USaleOrder, Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TFormOrderInternal = class(TFormSaleOrder)
+    LDAV: TLabel;
+    edtDav: TEdit;
+  protected
+  function Check: boolean; override;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormOrderInternal: TFormOrderInternal;
+
+implementation
+
+{$R *.dfm}
+
+{ TFormOrderInternal }
+
+function TFormOrderInternal.Check: boolean;
+begin
+  if inherited then
+  begin
+    if (StrToInt(edtSaleValue.Text) < 1000) then
+    begin
+      result := True;
+    end
+    else
+    begin
+      result := False;
+    end;
+  end
+  else
+  begin
+    result := False;
+  end;
+end;
+
+end.

@@ -1,0 +1,50 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'Principal'
+  ClientHeight = 193
+  ClientWidth = 444
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Button1: TButton
+    Left = 176
+    Top = 110
+    Width = 75
+    Height = 25
+    Caption = 'External Sale'
+    TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 176
+    Top = 71
+    Width = 75
+    Height = 25
+    Caption = 'Internal Sale'
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 176
+    Top = 149
+    Width = 75
+    Height = 25
+    Caption = 'MOIP Sale'
+    TabOrder = 2
+  end
+  object Button4: TButton
+    Left = 176
+    Top = 24
+    Width = 75
+    Height = 25
+    Caption = 'Order Sale'
+    TabOrder = 3
+    OnClick = Button4Click
+  end
+end
