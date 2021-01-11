@@ -1,0 +1,62 @@
+unit UComboBox13;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Vcl.Controls, Vcl.StdCtrls;
+
+type
+  TComboBox13 = class(TComboBox)
+  private
+    { Private declarations }
+  protected
+    { Protected declarations }
+    FAuxTStrings : TStringList;
+    Function getItem : TStringList;
+    Procedure setItem(Value: TStringList);
+    function getKey: String;
+  public
+    { Public declarations }
+    constructor Create(AOwner: TComponent);override;
+  published
+    { Published declarations }
+    property Key : TStringList read getItem write setItem;
+
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('Samples', [TComboBox13]);
+end;
+
+{ TComboBox13 }
+constructor TComboBox13.Create(AOwner: TComponent);
+begin
+  inherited;
+  FAuxTStrings := TStringList.Create;
+end;
+
+
+function TComboBox13.getItem: TStringList;
+begin
+ result := FAuxTStrings;
+end;
+
+function TComboBox13.getKey: String;
+begin
+ result := FAuxTStrings[ItemIndex];
+end;
+
+procedure TComboBox13.setItem(Value: TStringList);
+begin
+   if Assigned(FAuxTStrings) then
+    FAuxTStrings.Assign(Value)
+  else
+    FAuxTStrings := Value;
+end;
+
+end.

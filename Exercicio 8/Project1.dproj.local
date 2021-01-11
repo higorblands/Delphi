@@ -3,8 +3,8 @@
 	<Transactions>
     <Transaction>2020/12/10 09:24:21.000.166,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2020/12/11 08:49:34.000.920,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/12/11 09:09:13.000.592,C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 8\Unit1.dfm</Transaction>
-    <Transaction>2020/12/11 09:09:13.000.592,C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 8\Unit1.pas</Transaction>
-    <Transaction>2020/12/11 09:09:15.000.611,C:\Users\higor\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 8\Project1.dproj</Transaction>
+    <Transaction>2020/12/11 09:09:13.000.592,C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 8\Unit1.dfm=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/12/11 09:09:13.000.592,C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 8\Unit1.pas=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/11 09:09:15.000.611,C:\Users\higor\Documents\Delphi\Delphi-Echo\Exercicio 8\Project1.dproj=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
   </Transactions>
 </BorlandProject>
