@@ -1,0 +1,92 @@
+object FMain: TFMain
+  Left = 0
+  Top = 0
+  Caption = 'Main'
+  ClientHeight = 415
+  ClientWidth = 784
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Button1: TButton
+    Left = 648
+    Top = 40
+    Width = 75
+    Height = 25
+    Caption = 'See'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Memo3: TMemo
+    Left = 8
+    Top = 184
+    Width = 273
+    Height = 97
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 1
+  end
+  object Memo4: TMemo
+    Left = 320
+    Top = 184
+    Width = 273
+    Height = 97
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 2
+  end
+  object DBGrid1: TDBGrid
+    Left = -6
+    Top = 0
+    Width = 320
+    Height = 120
+    DataSource = dsProduct
+    TabOrder = 3
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBGrid2: TDBGrid
+    Left = 320
+    Top = 0
+    Width = 320
+    Height = 120
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object fdConnection: TFDConnection
+    Params.Strings = (
+      'Database=DbKairos_Aprovi'
+      'User_Name=sa'
+      'Password=admserver01'
+      'Address=127.0.0.1'
+      'DriverID=MSSQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 40
+    Top = 128
+  end
+  object fdQueryProduct: TFDQuery
+    Connection = fdConnection
+    SQL.Strings = (
+      'select top 100'#9'RazaoSocial from Cliente')
+    Left = 128
+    Top = 128
+  end
+  object dsProduct: TDataSource
+    DataSet = fdQueryProduct
+    Left = 216
+    Top = 128
+  end
+end
