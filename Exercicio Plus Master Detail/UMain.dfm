@@ -2,8 +2,8 @@ object FMain: TFMain
   Left = 0
   Top = 0
   Caption = 'Main'
-  ClientHeight = 415
-  ClientWidth = 784
+  ClientHeight = 385
+  ClientWidth = 651
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,8 +14,8 @@ object FMain: TFMain
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
-    Left = 648
-    Top = 40
+    Left = 277
+    Top = 296
     Width = 75
     Height = 25
     Caption = 'See'
@@ -25,7 +25,7 @@ object FMain: TFMain
   object DBGrid1: TDBGrid
     Left = -6
     Top = 0
-    Width = 320
+    Width = 648
     Height = 120
     DataSource = dsRS
     TabOrder = 1
@@ -36,10 +36,10 @@ object FMain: TFMain
     TitleFont.Style = []
   end
   object DBGrid2: TDBGrid
-    Left = 320
-    Top = 0
-    Width = 320
-    Height = 120
+    Left = 8
+    Top = 144
+    Width = 634
+    Height = 146
     DataSource = dsCNPJ
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
@@ -58,27 +58,27 @@ object FMain: TFMain
     Connected = True
     LoginPrompt = False
     Left = 40
-    Top = 128
+    Top = 360
   end
   object fdQueryRS: TFDQuery
     Connection = fdConnection
-    Left = 128
-    Top = 128
+    Left = 136
+    Top = 360
   end
   object dsRS: TDataSource
     DataSet = fdQueryRS
     OnDataChange = dsRSDataChange
-    Left = 216
-    Top = 128
+    Left = 224
+    Top = 360
   end
   object fdQueryCNPJ: TFDQuery
     Connection = fdConnection
-    Left = 416
-    Top = 128
+    Left = 440
+    Top = 352
   end
   object dsCNPJ: TDataSource
     DataSet = fdQueryCNPJ
-    Left = 504
-    Top = 128
+    Left = 528
+    Top = 352
   end
 end

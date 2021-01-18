@@ -39,24 +39,16 @@ implementation
 
 procedure TFMain.Button1Click(Sender: TObject);
 begin
+  fdQueryRS.SQL.Clear;
+  fdQueryRS.SQL.Add('select CodigoProduto, Descricao from Produto');
   fdQueryRS.Open;
 end;
 
 procedure TFMain.dsRSDataChange(Sender: TObject; Field: TField);
-var
-scnpj : string;
 begin
-fdQueryCNPJ.SQL.Clear;
-//scnpj := fdQueryRS.FieldByName('CnpjCpfCliente').AsString;
-fdquerycnpj.sql.add('select top 100');
-fdquerycnpj.sql.add('CnpjCpfCliente from Cliente');
-fdquerycnpj.sql.add('where RazaoSocial = RazaoSocial');
-fdQueryCNPJ.Open;
-
-
-
-
-
+  fdQueryCNPJ.SQL.Clear;
+  fdQueryCNPJ.SQL.Add('select numerolote from LoteProduto where CodigoProduto ='+ fdQueryRS.FieldByName('CodigoProduto').AsString + 'order by CodigoProduto asc');
+  fdQueryCNPJ.Open;
 end;
 
 end.
