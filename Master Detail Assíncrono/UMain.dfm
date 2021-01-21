@@ -11,6 +11,7 @@ object FMain: TFMain
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
@@ -27,7 +28,7 @@ object FMain: TFMain
     Top = 0
     Width = 648
     Height = 120
-    DataSource = dsRS
+    DataSource = dsLoteProduto
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -40,13 +41,22 @@ object FMain: TFMain
     Top = 144
     Width = 634
     Height = 146
-    DataSource = dsCNPJ
+    DataSource = dsProduto
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+  end
+  object btnBD: TButton
+    Left = 24
+    Top = 320
+    Width = 75
+    Height = 25
+    Caption = 'Ligar banco'
+    TabOrder = 3
+    OnClick = btnBDClick
   end
   object fdConnection: TFDConnection
     Params.Strings = (
@@ -55,33 +65,32 @@ object FMain: TFMain
       'Password=admserver01'
       'Address=127.0.0.1'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 360
   end
-  object fdQueryRS: TFDQuery
+  object fdQueryLoteProduto: TFDQuery
     Connection = fdConnection
-    Left = 136
-    Top = 360
+    Left = 424
+    Top = 368
   end
-  object dsRS: TDataSource
-    DataSet = FDMemTableRS
-    OnDataChange = dsRSDataChange
-    Left = 224
-    Top = 360
+  object dsLoteProduto: TDataSource
+    DataSet = FDMemTableLoteProduto
+    OnDataChange = dsLoteProdutoDataChange
+    Left = 512
+    Top = 368
   end
-  object fdQueryCNPJ: TFDQuery
+  object fdQueryProduto: TFDQuery
     Connection = fdConnection
-    Left = 440
-    Top = 352
+    Left = 120
+    Top = 368
   end
-  object dsCNPJ: TDataSource
-    DataSet = FDMemTableCNPJ
-    Left = 528
-    Top = 352
+  object dsProduto: TDataSource
+    DataSet = FDMemTableProduto
+    Left = 192
+    Top = 368
   end
-  object FDMemTableCNPJ: TFDMemTable
+  object FDMemTableProduto: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -89,18 +98,18 @@ object FMain: TFMain
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 440
-    Top = 312
-  end
-  object FDMemTableRS: TFDMemTable
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 136
+    Left = 160
     Top = 320
+  end
+  object FDMemTableLoteProduto: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 456
+    Top = 312
   end
 end

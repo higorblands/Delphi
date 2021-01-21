@@ -18,7 +18,11 @@ type
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     Button1: TButton;
+    Button2: TButton;
+    lbWarning: TLabel;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,7 +40,24 @@ procedure TFMain.Button1Click(Sender: TObject);
 begin
  FDQuery1.SQL.Add('select CodigoProduto,Descricao,AlteracaoDataHora from Produto');
  FDQuery1.Open;
+end;
 
+procedure TFMain.Button2Click(Sender: TObject);
+begin
+FDConnection1.Open;
+if FDConnection1.Connected then
+begin
+  ShowMessage('Sucesso ao ligar o banco.');
+end
+else
+begin
+  ShowMessage('Erro ao ligar o banco.');
+end;
+end;
+
+procedure TFMain.FormDestroy(Sender: TObject);
+begin
+FDConnection1.Close;
 end;
 
 end.

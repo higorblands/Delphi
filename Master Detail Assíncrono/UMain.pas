@@ -15,17 +15,20 @@ uses
 type
   TFMain = class(TForm)
     fdConnection: TFDConnection;
-    fdQueryRS: TFDQuery;
+    fdQueryLoteProduto: TFDQuery;
     Button1: TButton;
-    dsRS: TDataSource;
+    dsLoteProduto: TDataSource;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
-    fdQueryCNPJ: TFDQuery;
-    dsCNPJ: TDataSource;
-    FDMemTableCNPJ: TFDMemTable;
-    FDMemTableRS: TFDMemTable;
+    fdQueryProduto: TFDQuery;
+    dsProduto: TDataSource;
+    FDMemTableProduto: TFDMemTable;
+    FDMemTableLoteProduto: TFDMemTable;
+    btnBD: TButton;
     procedure Button1Click(Sender: TObject);
-    procedure dsRSDataChange(Sender: TObject; Field: TField);
+    procedure dsLoteProdutoDataChange(Sender: TObject; Field: TField);
+    procedure btnBDClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,23 +44,45 @@ implementation
 
 procedure TFMain.Button1Click(Sender: TObject);
 begin
-  fdQueryRS.SQL.Clear;
-  fdQueryCNPJ.SQL.Clear;
-  fdQueryRS.SQL.Add('Select * from LoteProduto');
-  fdQueryCNPJ.SQL.Add('Select top 100 * from Produto');
-  fdQueryCNPJ.Open;
-  fdQueryRS.Open;
-  FDMemTableRS.CopyDataSet(fdQueryRS, [coStructure, coAppend, coRestart]);
-  FDMemTableCNPJ.CopyDataSet(fdQueryCNPJ, [coStructure, coAppend, coRestart]);
-  fdQueryRS.Close;
-  fdQueryCNPJ.Close;
+  if fdConnection.Connected then
+  begin
+  fdQueryLoteProduto.open('Select top 100 * from Produto');
+  fdQueryProduto.open('Select * from LoteProduto');
+  FDMemTableLoteProduto.CopyDataSet(fdQueryLoteProduto, [coStructure, coAppend, coRestart]);
+  FDMemTableProduto.CopyDataSet(fdQueryProduto, [coStructure, coAppend, coRestart]);
+  fdQueryLoteProduto.Close;
+  fdQueryProduto.Close;
+  end
+  else
+  begin
+    ShowMessage('Favor ligar o banco primeiro.');
+  end;
+
 end;
 
-procedure TFMain.dsRSDataChange(Sender: TObject; Field: TField);
+procedure TFMain.btnBDClick(Sender: TObject);
 begin
-  FDMemTableCNPJ.Filtered := False;
-  FDMemTableCNPJ.Filter := 'codigoproduto = ' + (FDMemTableRS.FieldByName('CodigoProduto').AsString);
-  FDMemTableCNPJ.Filtered := True;
+  fdConnection.Open;
+  if fdConnection.Connected then
+  begin
+    ShowMessage('Sucesso ao ligar o banco');
+  end
+  else
+  begin
+    ShowMessage('Erro ao ligar o banco');
+  end;
+end;
+
+procedure TFMain.dsLoteProdutoDataChange(Sender: TObject; Field: TField);
+begin
+  FDMemTableProduto.Filtered := False;
+  FDMemTableProduto.Filter := 'codigoproduto = ' + (FDMemTableLoteProduto.FieldByName('CodigoProduto').AsString);
+  FDMemTableProduto.Filtered := True;
+end;
+
+procedure TFMain.FormDestroy(Sender: TObject);
+begin
+ fdConnection.Close;
 end;
 
 end.

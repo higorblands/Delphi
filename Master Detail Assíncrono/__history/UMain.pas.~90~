@@ -1,0 +1,80 @@
+unit UMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MSSQL,
+  FireDAC.Phys.MSSQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Vcl.StdCtrls, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFMain = class(TForm)
+    fdConnection: TFDConnection;
+    fdQueryLoteProduto: TFDQuery;
+    Button1: TButton;
+    dsLoteProduto: TDataSource;
+    DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
+    fdQueryProduto: TFDQuery;
+    dsProduto: TDataSource;
+    FDMemTableProduto: TFDMemTable;
+    FDMemTableLoteProduto: TFDMemTable;
+    btnBD: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure dsLoteProdutoDataChange(Sender: TObject; Field: TField);
+    procedure btnBDClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FMain: TFMain;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFMain.Button1Click(Sender: TObject);
+begin
+  fdQueryLoteProduto.open('Select * from LoteProduto');
+  fdQueryProduto.open('Select top 100 * from Produto');
+  FDMemTableLoteProduto.CopyDataSet(fdQueryLoteProduto, [coStructure, coAppend, coRestart]);
+  FDMemTableProduto.CopyDataSet(fdQueryProduto, [coStructure, coAppend, coRestart]);
+  fdQueryLoteProduto.Close;
+  fdQueryProduto.Close;
+end;
+
+procedure TFMain.btnBDClick(Sender: TObject);
+begin
+  fdConnection.Open;
+  if fdConnection.Connected then
+  begin
+    ShowMessage('Sucesso ao ligar o banco');
+  end
+  else
+  begin
+    ShowMessage('Erro ao ligar o banco');
+  end;
+end;
+
+procedure TFMain.dsLoteProdutoDataChange(Sender: TObject; Field: TField);
+begin
+  FDMemTableProduto.Filtered := False;
+  FDMemTableProduto.Filter := 'codigoproduto = ' + (FDMemTableLoteProduto.FieldByName('CodigoProduto').AsString);
+  FDMemTableProduto.Filtered := True;
+end;
+
+procedure TFMain.FormDestroy(Sender: TObject);
+begin
+ fdConnection.Close;
+end;
+
+end.
