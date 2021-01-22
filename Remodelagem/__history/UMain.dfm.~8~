@@ -1,0 +1,82 @@
+object FMain: TFMain
+  Left = 0
+  Top = 0
+  Caption = 'Main'
+  ClientHeight = 201
+  ClientWidth = 445
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 0
+    Width = 445
+    Height = 121
+    Align = alCustom
+    DataSource = dsAluno
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        Visible = True
+      end>
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 168
+    Width = 75
+    Height = 25
+    Caption = 'Ligar o banco'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 208
+    Top = 168
+    Width = 75
+    Height = 25
+    Caption = 'Listar'
+    TabOrder = 2
+    OnClick = Button2Click
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 112
+    Top = 127
+    Width = 240
+    Height = 25
+    TabOrder = 3
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=dbkairos_aprovi'
+      'User_Name=sa'
+      'Password=admserver01'
+      'Server=localhost'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 392
+    Top = 16
+  end
+  object fdQueryAlunos: TFDQuery
+    Connection = FDConnection1
+    Left = 392
+    Top = 64
+  end
+  object dsAluno: TDataSource
+    DataSet = fdQueryAlunos
+    Left = 392
+    Top = 120
+  end
+end

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/12/10 09:24:21.000.166,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/16 11:42:19.000.943,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/17 08:06:54.000.017,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/01/21 10:50:54.000.127,=C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/01/21 10:58:24.000.509,C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\higor\Documents\Delphi\Delphi-Echo\RAD CRUD\UMain.dfm</Transaction>
+    <Transaction>2021/01/21 10:58:24.000.509,C:\Users\higor\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\higor\Documents\Delphi\Delphi-Echo\RAD CRUD\UMain.pas</Transaction>
+    <Transaction>2021/01/21 11:08:46.000.460,C:\Users\higor\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\higor\Documents\Delphi\Delphi-Echo\RAD CRUD\RADCrud.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
