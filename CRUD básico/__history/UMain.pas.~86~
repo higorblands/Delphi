@@ -38,7 +38,7 @@ type
     edtPeriodo: TEdit;
     Período: TLabel;
     FDQuery2: TFDQuery;
-    edtDel: TEdit;
+    btnConfirmDelete: TButton;
     procedure btONBDClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnListClick(Sender: TObject);
@@ -47,6 +47,7 @@ type
     procedure list;
     procedure del;
     procedure btnDeleteClick(Sender: TObject);
+    procedure btnConfirmDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,20 +75,24 @@ begin
 end;
 
 procedure TForm1.del;
+var
+aux : string;
 begin
-FDQuery2.Close;
-    FDQuery2.SQL.Clear;
-    FDQuery2.SQL.add('select * from AlunosCadastro');
-    FDQuery2.Open;
-FDQuery1.Close;
-  FDQuery1.SQL.clear;
-  FDQuery1.SQL.add('delete from AlunosCadastro where id = ' + FDQuery2.FieldByName('ID').AsString + '');
+ aux := FDQuery1.fieldbyname('ID').asString;
+  FDQuery2.Close;
+  FDQuery2.SQL.Clear;
+  FDQuery2.SQL.add('select * from AlunosCadastro');
+  FDQuery2.Open;
+  FDQuery1.Close;
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.add('delete from AlunosCadastro where id = ' + aux + '');
   FDQuery1.ExecSQL;
   FDQuery2.Refresh;
   FDQuery1.Close;
-    FDQuery1.SQL.Clear;
-    FDQuery1.SQL.add('select * from AlunosCadastro');
-    FDQuery1.Open;
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.add('select * from AlunosCadastro');
+  FDQuery1.Open;
+  ShowMessage('Aluno de código ' + aux + ' deletado com sucesso.');
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -101,37 +106,39 @@ begin
   FDQuery1.SQL.Clear;
   FDQuery1.SQL.add
     ('insert into AlunosCadastro (ID,NOME,IDCURSO,TURNO,PERIODO,DATANASCIMENTO,DATAINGRESSOFACULDADE)');
-  FDQuery1.SQL.add('values(''' +EdtId.Text+ ''',''' + EdtNome.Text + ''',''' +
-    EdtIDCurso.Text + ''',''' + EdtTurno.Text + ''',''' + EdtPeriodo.Text + ''',''' +
-    DateToStr(DateTimePicker1.Date) + ''',''' +
+  FDQuery1.SQL.add('values(''' + edtID.Text + ''',''' + edtNome.Text + ''',''' +
+    edtIDCurso.Text + ''',''' + edtTurno.Text + ''',''' + edtPeriodo.Text +
+    ''',''' + DateToStr(DateTimePicker1.Date) + ''',''' +
     DateToStr(DateTimePicker2.Date) + ''')');
-     {FDQuery1.SQL.add
+  { FDQuery1.SQL.add
     ('insert into AlunosCadastro (ID,NOME,IDCURSO,TURNO,PERIODO,DATANASCIMENTO,DATAINGRESSOFACULDADE)');
-  FDQuery1.SQL.add('values (6,''Higor'',5,''Manhã'',1,''01/12/1996'',''10/10/2020'')');}
-    FDQuery1.ExecSQL;
-    FDQuery1.Close;
-    FDQuery1.SQL.Clear;
-    FDQuery1.SQL.add('select * from AlunosCadastro');
-    FDQuery1.Open;
+    FDQuery1.SQL.add('values (6,''Higor'',5,''Manhã'',1,''01/12/1996'',''10/10/2020'')'); }
+  FDQuery1.ExecSQL;
+  FDQuery1.Close;
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.add('select * from AlunosCadastro');
+  FDQuery1.Open;
 end;
-
-
 
 procedure TForm1.list;
 begin
-FDQuery1.Close;
-    FDQuery1.SQL.Clear;
-    FDQuery1.SQL.add('select * from AlunosCadastro');
-    FDQuery1.Open;
+  FDQuery1.Close;
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.add('select * from AlunosCadastro');
+  FDQuery1.Open;
 
+end;
+
+procedure TForm1.btnConfirmDeleteClick(Sender: TObject);
+begin
+  del;
 end;
 
 procedure TForm1.btnDeleteClick(Sender: TObject);
 begin
-if FDConnection1.Connected then
+  if FDConnection1.Connected then
   begin
-  edtDel.Visible := True;
-   del;
+    btnConfirmDelete.Visible := True;
   end
   else
   begin
@@ -158,7 +165,7 @@ procedure TForm1.btnListClick(Sender: TObject);
 begin
   if FDConnection1.Connected then
   begin
-   list;
+    list;
   end
   else
   begin

@@ -38,7 +38,6 @@ type
     edtPeriodo: TEdit;
     Período: TLabel;
     FDQuery2: TFDQuery;
-    edtDel: TEdit;
     btnConfirmDelete: TButton;
     procedure btONBDClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -51,6 +50,7 @@ type
     procedure btnConfirmDeleteClick(Sender: TObject);
   private
     { Private declarations }
+    aux : string;
   public
     { Public declarations }
   end;
@@ -76,21 +76,23 @@ begin
 end;
 
 procedure TForm1.del;
+
 begin
+ aux := FDQuery1.fieldbyname('ID').asString;
   FDQuery2.Close;
   FDQuery2.SQL.Clear;
   FDQuery2.SQL.add('select * from AlunosCadastro');
   FDQuery2.Open;
   FDQuery1.Close;
   FDQuery1.SQL.Clear;
-  FDQuery1.SQL.add('delete from AlunosCadastro where id = ' + edtDel.Text + '');
+  FDQuery1.SQL.add('delete from AlunosCadastro where id = ' + aux + '');
   FDQuery1.ExecSQL;
   FDQuery2.Refresh;
   FDQuery1.Close;
   FDQuery1.SQL.Clear;
   FDQuery1.SQL.add('select * from AlunosCadastro');
   FDQuery1.Open;
-  ShowMessage('Aluno de código ' + edtDel.Text + ' deletado com sucesso.');
+  ShowMessage('Aluno de código ' + aux + ' deletado com sucesso.');
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -136,7 +138,6 @@ procedure TForm1.btnDeleteClick(Sender: TObject);
 begin
   if FDConnection1.Connected then
   begin
-    edtDel.Visible := True;
     btnConfirmDelete.Visible := True;
   end
   else

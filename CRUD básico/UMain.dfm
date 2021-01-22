@@ -113,8 +113,8 @@
     TabOrder = 4
   end
   object btnDelete: TButton
-    Left = 632
-    Top = 296
+    Left = 272
+    Top = 336
     Width = 75
     Height = 25
     Caption = 'Delete'
@@ -176,22 +176,13 @@
     NumbersOnly = True
     TabOrder = 8
   end
-  object edtDel: TEdit
-    Left = 424
-    Top = 340
-    Width = 195
-    Height = 21
-    TabOrder = 13
-    TextHint = 'Digite o c'#243'digo do aluno para deletar'
-    Visible = False
-  end
   object btnConfirmDelete: TButton
-    Left = 632
+    Left = 376
     Top = 336
     Width = 89
     Height = 25
     Caption = 'Confirm Delete'
-    TabOrder = 14
+    TabOrder = 13
     Visible = False
     OnClick = btnConfirmDeleteClick
   end

@@ -87,7 +87,7 @@
     TitleFont.Style = []
   end
   object btnList: TButton
-    Left = 112
+    Left = 120
     Top = 182
     Width = 75
     Height = 33
@@ -113,7 +113,7 @@
     TabOrder = 4
   end
   object btnDelete: TButton
-    Left = 280
+    Left = 272
     Top = 336
     Width = 75
     Height = 25
@@ -176,6 +176,15 @@
     NumbersOnly = True
     TabOrder = 8
   end
+  object btnConfirmDelete: TButton
+    Left = 376
+    Top = 336
+    Width = 89
+    Height = 25
+    Caption = 'Confirm Delete'
+    TabOrder = 13
+    OnClick = btnConfirmDeleteClick
+  end
   object FDConnection1: TFDConnection
     Params.Strings = (
       'User_Name=sa'
@@ -183,7 +192,6 @@
       'Server=localhost'
       'Database=DbKairos_Aprovi'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 296
   end
@@ -193,7 +201,7 @@
   end
   object DataSource1: TDataSource
     DataSet = FDQuery1
-    Left = 432
+    Left = 424
   end
   object FDQuery2: TFDQuery
     Connection = FDConnection1

@@ -87,7 +87,7 @@
     TitleFont.Style = []
   end
   object btnList: TButton
-    Left = 112
+    Left = 120
     Top = 182
     Width = 75
     Height = 33
@@ -113,8 +113,8 @@
     TabOrder = 4
   end
   object btnDelete: TButton
-    Left = 280
-    Top = 336
+    Left = 632
+    Top = 296
     Width = 75
     Height = 25
     Caption = 'Delete'
@@ -176,6 +176,25 @@
     NumbersOnly = True
     TabOrder = 8
   end
+  object edtDel: TEdit
+    Left = 424
+    Top = 340
+    Width = 195
+    Height = 21
+    TabOrder = 13
+    TextHint = 'Digite o c'#243'digo do aluno para deletar'
+    Visible = False
+  end
+  object btnConfirmDelete: TButton
+    Left = 632
+    Top = 336
+    Width = 89
+    Height = 25
+    Caption = 'Confirm Delete'
+    TabOrder = 14
+    Visible = False
+    OnClick = btnConfirmDeleteClick
+  end
   object FDConnection1: TFDConnection
     Params.Strings = (
       'User_Name=sa'
@@ -183,7 +202,6 @@
       'Server=localhost'
       'Database=DbKairos_Aprovi'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 296
   end
@@ -193,12 +211,10 @@
   end
   object DataSource1: TDataSource
     DataSet = FDQuery1
-    Left = 432
+    Left = 424
   end
   object FDQuery2: TFDQuery
     Connection = FDConnection1
-    SQL.Strings = (
-      'select * from AlunosCadastro')
     Left = 384
   end
 end
