@@ -1,3 +1,83 @@
+{$A8,B-,C+,D+,E-,F-,G+,H+,I+,J-,K-,L+,M-,N-,O+,P+,Q-,R-,S-,T-,U-,V+,W-,X+,Y+,Z1}
+{$MINSTACKSIZE $00004000}
+{$MAXSTACKSIZE $00100000}
+{$IMAGEBASE $00400000}
+{$APPTYPE GUI}
+{$WARN SYMBOL_DEPRECATED ON}
+{$WARN SYMBOL_LIBRARY ON}
+{$WARN SYMBOL_PLATFORM ON}
+{$WARN SYMBOL_EXPERIMENTAL ON}
+{$WARN UNIT_LIBRARY ON}
+{$WARN UNIT_PLATFORM ON}
+{$WARN UNIT_DEPRECATED ON}
+{$WARN UNIT_EXPERIMENTAL ON}
+{$WARN HRESULT_COMPAT ON}
+{$WARN HIDING_MEMBER ON}
+{$WARN HIDDEN_VIRTUAL ON}
+{$WARN GARBAGE ON}
+{$WARN BOUNDS_ERROR ON}
+{$WARN ZERO_NIL_COMPAT ON}
+{$WARN STRING_CONST_TRUNCED ON}
+{$WARN FOR_LOOP_VAR_VARPAR ON}
+{$WARN TYPED_CONST_VARPAR ON}
+{$WARN ASG_TO_TYPED_CONST ON}
+{$WARN CASE_LABEL_RANGE ON}
+{$WARN FOR_VARIABLE ON}
+{$WARN CONSTRUCTING_ABSTRACT ON}
+{$WARN COMPARISON_FALSE ON}
+{$WARN COMPARISON_TRUE ON}
+{$WARN COMPARING_SIGNED_UNSIGNED ON}
+{$WARN COMBINING_SIGNED_UNSIGNED ON}
+{$WARN UNSUPPORTED_CONSTRUCT ON}
+{$WARN FILE_OPEN ON}
+{$WARN FILE_OPEN_UNITSRC ON}
+{$WARN BAD_GLOBAL_SYMBOL ON}
+{$WARN DUPLICATE_CTOR_DTOR ON}
+{$WARN INVALID_DIRECTIVE ON}
+{$WARN PACKAGE_NO_LINK ON}
+{$WARN PACKAGED_THREADVAR ON}
+{$WARN IMPLICIT_IMPORT ON}
+{$WARN HPPEMIT_IGNORED ON}
+{$WARN NO_RETVAL ON}
+{$WARN USE_BEFORE_DEF ON}
+{$WARN FOR_LOOP_VAR_UNDEF ON}
+{$WARN UNIT_NAME_MISMATCH ON}
+{$WARN NO_CFG_FILE_FOUND ON}
+{$WARN IMPLICIT_VARIANTS ON}
+{$WARN UNICODE_TO_LOCALE ON}
+{$WARN LOCALE_TO_UNICODE ON}
+{$WARN IMAGEBASE_MULTIPLE ON}
+{$WARN SUSPICIOUS_TYPECAST ON}
+{$WARN PRIVATE_PROPACCESSOR ON}
+{$WARN UNSAFE_TYPE OFF}
+{$WARN UNSAFE_CODE OFF}
+{$WARN UNSAFE_CAST OFF}
+{$WARN OPTION_TRUNCATED ON}
+{$WARN WIDECHAR_REDUCED ON}
+{$WARN DUPLICATES_IGNORED ON}
+{$WARN UNIT_INIT_SEQ ON}
+{$WARN LOCAL_PINVOKE ON}
+{$WARN MESSAGE_DIRECTIVE ON}
+{$WARN TYPEINFO_IMPLICITLY_ADDED ON}
+{$WARN RLINK_WARNING ON}
+{$WARN IMPLICIT_STRING_CAST ON}
+{$WARN IMPLICIT_STRING_CAST_LOSS ON}
+{$WARN EXPLICIT_STRING_CAST OFF}
+{$WARN EXPLICIT_STRING_CAST_LOSS OFF}
+{$WARN CVT_WCHAR_TO_ACHAR ON}
+{$WARN CVT_NARROWING_STRING_LOST ON}
+{$WARN CVT_ACHAR_TO_WCHAR ON}
+{$WARN CVT_WIDENING_STRING_LOST ON}
+{$WARN NON_PORTABLE_TYPECAST ON}
+{$WARN XML_WHITESPACE_NOT_ALLOWED ON}
+{$WARN XML_UNKNOWN_ENTITY ON}
+{$WARN XML_INVALID_NAME_START ON}
+{$WARN XML_INVALID_NAME ON}
+{$WARN XML_EXPECTED_CHARACTER ON}
+{$WARN XML_CREF_NO_RESOLVE ON}
+{$WARN XML_NO_PARM ON}
+{$WARN XML_NO_MATCHING_PARM ON}
+{$WARN IMMUTABLE_STRINGS OFF}
 unit UMain;
 
 interface
@@ -39,18 +119,29 @@ type
     Período: TLabel;
     FDQuery2: TFDQuery;
     btnConfirmDelete: TButton;
+    btnclear: TButton;
     procedure btONBDClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnListClick(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
     procedure inserte;
     procedure list;
+    procedure update;
+    procedure clear;
+    procedure bdcall;
+
     procedure del;
     procedure btnDeleteClick(Sender: TObject);
     procedure btnConfirmDeleteClick(Sender: TObject);
+
+    procedure DataSource1DataChange(Sender: TObject; Field: TField);
+    procedure btnclearClick(Sender: TObject);
+
+    procedure btnUpdateClick(Sender: TObject);
   private
     { Private declarations }
-    aux : string;
+    idbd, nomebd, idcursobd, turnobd, periodobd: string;
+    datanascimentobd, dataingressofaculdadebd: TDateTime;
   public
     { Public declarations }
   end;
@@ -64,6 +155,7 @@ implementation
 
 procedure TForm1.btONBDClick(Sender: TObject);
 begin
+  // Turn on BD
   FDConnection1.Open;
   if FDConnection1.Connected then
   begin
@@ -75,24 +167,47 @@ begin
   end;
 end;
 
+procedure TForm1.clear;
+begin
+  edtID.clear;
+  edtNome.clear;
+  edtTurno.clear;
+  edtIDCurso.clear;
+  edtPeriodo.clear;
+
+end;
+
+procedure TForm1.DataSource1DataChange(Sender: TObject; Field: TField);
+begin
+  bdcall;
+  edtID.Text := idbd;
+  edtNome.Text := nomebd;
+  edtTurno.Text := turnobd;
+  edtIDCurso.Text := idcursobd;
+  edtPeriodo.Text := periodobd;
+  DateTimePicker1.Date := datanascimentobd;
+  DateTimePicker2.Date := dataingressofaculdadebd;
+
+end;
+
 procedure TForm1.del;
 
 begin
- aux := FDQuery1.fieldbyname('ID').asString;
+
   FDQuery2.Close;
-  FDQuery2.SQL.Clear;
-  FDQuery2.SQL.add('select * from AlunosCadastro');
+  FDQuery2.SQL.clear;
+  FDQuery2.SQL.add('select * from AlunosCadastro ORDER BY id');
   FDQuery2.Open;
   FDQuery1.Close;
-  FDQuery1.SQL.Clear;
-  FDQuery1.SQL.add('delete from AlunosCadastro where id = ' + aux + '');
+  FDQuery1.SQL.clear;
+  FDQuery1.SQL.add('delete from AlunosCadastro where id = ' + idbd + '');
   FDQuery1.ExecSQL;
   FDQuery2.Refresh;
   FDQuery1.Close;
-  FDQuery1.SQL.Clear;
-  FDQuery1.SQL.add('select * from AlunosCadastro');
+  FDQuery1.SQL.clear;
+  FDQuery1.SQL.add('select * from AlunosCadastro ORDER BY id');
   FDQuery1.Open;
-  ShowMessage('Aluno de código ' + aux + ' deletado com sucesso.');
+  ShowMessage('Aluno de código ' + idbd + ' deletado com sucesso.');
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -103,7 +218,7 @@ end;
 procedure TForm1.inserte;
 begin
   FDQuery1.Close;
-  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.clear;
   FDQuery1.SQL.add
     ('insert into AlunosCadastro (ID,NOME,IDCURSO,TURNO,PERIODO,DATANASCIMENTO,DATAINGRESSOFACULDADE)');
   FDQuery1.SQL.add('values(''' + edtID.Text + ''',''' + edtNome.Text + ''',''' +
@@ -115,27 +230,66 @@ begin
     FDQuery1.SQL.add('values (6,''Higor'',5,''Manhã'',1,''01/12/1996'',''10/10/2020'')'); }
   FDQuery1.ExecSQL;
   FDQuery1.Close;
-  FDQuery1.SQL.Clear;
-  FDQuery1.SQL.add('select * from AlunosCadastro');
+  FDQuery1.SQL.clear;
+  FDQuery1.SQL.add('select * from AlunosCadastro ORDER BY id');
   FDQuery1.Open;
 end;
 
 procedure TForm1.list;
 begin
   FDQuery1.Close;
-  FDQuery1.SQL.Clear;
-  FDQuery1.SQL.add('select * from AlunosCadastro');
+  FDQuery1.SQL.clear;
+  FDQuery1.SQL.add('select * from AlunosCadastro ORDER BY id');
   FDQuery1.Open;
 
 end;
 
+procedure TForm1.update;
+begin
+  FDQuery1.Close;
+  FDQuery1.SQL.clear;
+  FDQuery1.SQL.add('update AlunosCadastro');
+  FDQuery1.SQL.add('set	id = ' + edtID.Text + ', Nome = ''' + edtNome.Text +
+    ''', IdCurso = ''' + edtIDCurso.Text + ''', Turno = ''' + edtTurno.Text +
+    ''', Periodo = ' + edtPeriodo.Text + ', DataNascimento = ''' +
+    DateToStr(DateTimePicker1.Date) + ''', DataIngressoFaculdade = ''' +
+    DateToStr(DateTimePicker2.Date) + '''');
+  FDQuery1.SQL.add('where id = ' + idbd + '');
+  FDQuery1.ExecSQL;
+  FDQuery1.Close;
+  FDQuery1.SQL.clear;
+  FDQuery1.SQL.add('select * from AlunosCadastro ORDER BY id');
+  FDQuery1.Open;
+
+end;
+
+procedure TForm1.bdcall;
+begin
+  idbd := FDQuery1.FieldByName('ID').AsString;
+  nomebd := FDQuery1.FieldByName('Nome').AsString;
+  idcursobd := FDQuery1.FieldByName('IDCURSO').AsString;
+  turnobd := FDQuery1.FieldByName('TURNO').AsString;
+  periodobd := FDQuery1.FieldByName('PERIODO').AsString;
+  datanascimentobd := FDQuery1.FieldByName('DATANASCIMENTO').AsDateTime;
+  dataingressofaculdadebd := FDQuery1.FieldByName('DATAINGRESSOFACULDADE')
+    .AsDateTime;
+end;
+
+procedure TForm1.btnclearClick(Sender: TObject);
+begin
+  clear;
+end;
+
 procedure TForm1.btnConfirmDeleteClick(Sender: TObject);
 begin
+  // Confirm Del
   del;
+  btnConfirmDelete.Visible :=false;
 end;
 
 procedure TForm1.btnDeleteClick(Sender: TObject);
 begin
+  // Delete
   if FDConnection1.Connected then
   begin
     btnConfirmDelete.Visible := True;
@@ -149,6 +303,7 @@ end;
 
 procedure TForm1.btnInsertClick(Sender: TObject);
 begin
+  // Insert
   if FDConnection1.Connected then
   begin
     with FDQuery1.SQL do
@@ -163,15 +318,31 @@ end;
 
 procedure TForm1.btnListClick(Sender: TObject);
 begin
+  // List
   if FDConnection1.Connected then
   begin
     list;
+
   end
   else
   begin
     ShowMessage('Você deve ligar o banco primeiro antes de listar.');
   end;
 
+end;
+
+procedure TForm1.btnUpdateClick(Sender: TObject);
+begin
+  // Update
+  if FDConnection1.Connected then
+  begin
+    with FDQuery1.SQL do
+      update;
+  end
+  else
+  begin
+    ShowMessage('Você deve ligar o banco primeiro antes de atualizar.');
+  end;
 end;
 
 end.

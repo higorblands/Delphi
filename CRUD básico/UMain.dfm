@@ -111,6 +111,7 @@
     Height = 25
     Caption = 'Update'
     TabOrder = 4
+    OnClick = btnUpdateClick
   end
   object btnDelete: TButton
     Left = 272
@@ -186,6 +187,21 @@
     Visible = False
     OnClick = btnConfirmDeleteClick
   end
+  object btnclear: TButton
+    Left = 512
+    Top = 336
+    Width = 75
+    Height = 25
+    Caption = 'Clear'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 14
+    OnClick = btnclearClick
+  end
   object FDConnection1: TFDConnection
     Params.Strings = (
       'User_Name=sa'
@@ -202,6 +218,7 @@
   end
   object DataSource1: TDataSource
     DataSet = FDQuery1
+    OnDataChange = DataSource1DataChange
     Left = 424
   end
   object FDQuery2: TFDQuery
