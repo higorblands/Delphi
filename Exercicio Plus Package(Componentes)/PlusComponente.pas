@@ -8,12 +8,12 @@ uses
 
 type
   TForm1 = class(TForm)
-    ComboBoxProducts: TComboBox13;
     edtProductName: TEdit;
     btnSave: TButton;
     edtProductCode: TEdit;
+    ComboBox131: TComboBox13;
     procedure btnSaveClick(Sender: TObject);
-    procedure ComboBoxProductsSelect(Sender: TObject);
+    procedure ComboBox131Select(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,12 +29,12 @@ implementation
 
 procedure TForm1.btnSaveClick(Sender: TObject);
 begin
-ComboBoxProducts.addMega(edtProductName.Text,edtProductCode.Text);
+ComboBox131.addMega(edtProductName.Text,edtProductCode.Text);
 end;
 
-procedure TForm1.ComboBoxProductsSelect(Sender: TObject);
+procedure TForm1.ComboBox131Select(Sender: TObject);
 begin
-  ShowMessage(ComboBoxProducts.getKey);
+ShowMessage(ComboBox131.getKey);
 end;
 
 end.

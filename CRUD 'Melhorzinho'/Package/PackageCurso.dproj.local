@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/01/11 08:32:47.000.213,=rtl.dcp</Transaction>
+    <Transaction>2021/01/11 08:51:35.000.286,=rtl.dcp</Transaction>
+    <Transaction>2021/01/11 08:52:25.000.313,C:\Users\higor\Documents\Embarcadero\Studio\Projects\Package1.dproj=C:\Users\higor\Documents\Delphi\Delphi-Echo\Package\Package13.dproj</Transaction>
+    <Transaction>2021/01/11 08:55:15.000.703,=C:\Users\higor\Documents\Delphi\Delphi-Echo\Package\Units\UComboBox13.pas</Transaction>
+    <Transaction>2021/01/11 08:55:15.000.714,=vcl.dcp</Transaction>
+    <Transaction>2021/01/26 08:54:22.109,C:\Users\higor\Documents\Delphi\Delphi-Echo\CRUD 'Melhorzinho'\Package\PackageCurso.dproj=C:\Users\higor\Documents\Delphi\Delphi-Echo\CRUD 'Melhorzinho'\Package\Package13.dproj</Transaction>
+    <Transaction>2021/01/26 08:54:33.868,C:\Users\higor\Documents\Delphi\Delphi-Echo\CRUD 'Melhorzinho'\Package\Units\UComboBoxCursos.pas=C:\Users\higor\Documents\Delphi\Delphi-Echo\CRUD 'Melhorzinho'\Package\Units\UComboBox13.pas</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BCDE8DB0-1303-49A7-A495-C05A6E4A9992}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PackageCurso.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\CRUDMelhorzinho.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PackageCurso">
+        <MSBuild Projects="PackageCurso.dproj"/>
+    </Target>
+    <Target Name="PackageCurso:Clean">
+        <MSBuild Projects="PackageCurso.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PackageCurso:Make">
+        <MSBuild Projects="PackageCurso.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CRUDMelhorzinho">
+        <MSBuild Projects="..\CRUDMelhorzinho.dproj"/>
+    </Target>
+    <Target Name="CRUDMelhorzinho:Clean">
+        <MSBuild Projects="..\CRUDMelhorzinho.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CRUDMelhorzinho:Make">
+        <MSBuild Projects="..\CRUDMelhorzinho.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PackageCurso;CRUDMelhorzinho"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PackageCurso:Clean;CRUDMelhorzinho:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PackageCurso:Make;CRUDMelhorzinho:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

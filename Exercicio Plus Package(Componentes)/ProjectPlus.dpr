@@ -2,7 +2,8 @@ program ProjectPlus;
 
 uses
   Vcl.Forms,
-  PlusComponente in 'PlusComponente.pas' {Form1};
+  PlusComponente in 'PlusComponente.pas' {Form1},
+  UComboBox13 in 'Package\Units\UComboBox13.pas';
 
 {$R *.res}
 

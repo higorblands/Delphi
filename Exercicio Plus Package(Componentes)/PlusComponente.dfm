@@ -13,22 +13,13 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object ComboBoxProducts: TComboBox13
-    Left = 256
-    Top = 64
-    Width = 145
-    Height = 21
-    TabOrder = 0
-    TextHint = 'Saved products'
-    OnSelect = ComboBoxProductsSelect
-  end
   object edtProductName: TEdit
     Left = 56
     Top = 48
     Width = 137
     Height = 21
     Alignment = taCenter
-    TabOrder = 1
+    TabOrder = 0
     TextHint = 'Enter the product name'
   end
   object btnSave: TButton
@@ -46,7 +37,16 @@ object Form1: TForm1
     Width = 137
     Height = 21
     Alignment = taCenter
-    TabOrder = 3
+    TabOrder = 1
     TextHint = 'Enter the product code'
+  end
+  object ComboBox131: TComboBox13
+    Left = 232
+    Top = 48
+    Width = 145
+    Height = 21
+    TabOrder = 3
+    Text = 'ComboBox131'
+    OnSelect = ComboBox131Select
   end
 end
