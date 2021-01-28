@@ -131,6 +131,7 @@ type
     procedure del;
     procedure clear;
     procedure bdcall;
+    procedure fillcombobox;
 
     procedure btnDeleteClick(Sender: TObject);
     procedure btnConfirmDeleteClick(Sender: TObject);
@@ -142,9 +143,9 @@ type
     procedure ComboBoxCursos1Select(Sender: TObject);
   private
     { Private declarations }
-    idbd, nomebd, idcursobd, turnobd, periodobd, cursobd: string;
+    idbd, nomebd, idcursobd, turnobd, periodobd, cursobd,
+      idcursobdComboBox: string;
     datanascimentobd, dataingressofaculdadebd: TDateTime;
-    i: integer;
   public
     { Public declarations }
   end;
@@ -163,6 +164,7 @@ begin
   if FDConnection1.Connected then
   begin
     ShowMessage('Banco ligado com sucesso.');
+    fillcombobox;
   end
   else
   begin
@@ -182,7 +184,6 @@ end;
 procedure TForm1.ComboBoxCursos1Select(Sender: TObject);
 begin
   idcursobd := ComboBoxCursos1.getKey;
-
 end;
 
 procedure TForm1.DataSource1DataChange(Sender: TObject; Field: TField);
@@ -194,14 +195,13 @@ begin
   edtPeriodo.Text := periodobd;
   DateTimePicker1.Date := datanascimentobd;
   DateTimePicker2.Date := dataingressofaculdadebd;
-  ComboBoxCursos1.Text := cursobd;
+  ComboBoxCursos1.Text:= cursobd;
 
 end;
 
 procedure TForm1.del;
 
 begin
-
   FDQuery2.Close;
   FDQuery2.SQL.clear;
   FDQuery2.SQL.add('select * from AlunosCadastro ORDER BY id');
@@ -220,6 +220,22 @@ begin
     ('inner join CursosCadastro on AlunosCadastro.IdCurso = CursosCadastro.IdCurso ORDER BY id');
   FDQuery1.Open;
   ShowMessage('Aluno deletado com sucesso.');
+end;
+
+procedure TForm1.fillcombobox;
+begin
+  ComboBoxCursos1.Items.clear;
+  FDQuery3.Close;
+  FDQuery3.SQL.clear;
+  FDQuery3.SQL.add('select idcurso,Curso from CursosCadastro');
+  FDQuery3.Open;
+  idcursobdComboBox := FDQuery3.FieldByName('idcurso').AsString;
+  while not FDQuery3.Eof do
+  begin
+    ComboBoxCursos1.addMega(FDQuery3.Fields[1].AsString, idcursobdComboBox);
+    FDQuery3.Next;
+  end;
+  FDQuery3.Close;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -250,8 +266,7 @@ end;
 
 procedure TForm1.list;
 begin
-  i := -1;
-  ComboBoxCursos1.Items.clear;
+
   FDQuery1.Close;
   FDQuery1.SQL.clear;
   FDQuery1.SQL.add
@@ -260,17 +275,7 @@ begin
   FDQuery1.SQL.add
     ('inner join CursosCadastro on AlunosCadastro.IdCurso = CursosCadastro.IdCurso ORDER BY id');
   FDQuery1.Open;
-  FDQuery3.Close;
-  FDQuery3.SQL.clear;
-  FDQuery3.SQL.add('select Curso from CursosCadastro');
-  FDQuery3.Open;
-  while not FDQuery3.Eof do
-  begin
-    i := i + 1;
-    ComboBoxCursos1.addMega(FDQuery3.Fields[0].AsString, inttostr(i));
-    FDQuery3.Next;
-  end;
-  FDQuery3.Close;
+
 end;
 
 procedure TForm1.update;
@@ -307,7 +312,6 @@ begin
   dataingressofaculdadebd := FDQuery1.FieldByName('DATAINGRESSOFACULDADE')
     .AsDateTime;
   cursobd := FDQuery1.FieldByName('CURSO').AsString;
-
 end;
 
 procedure TForm1.btnclearClick(Sender: TObject);

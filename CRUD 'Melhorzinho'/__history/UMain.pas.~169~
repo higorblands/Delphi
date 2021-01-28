@@ -144,7 +144,7 @@ type
     { Private declarations }
     idbd, nomebd, idcursobd, turnobd, periodobd, cursobd: string;
     datanascimentobd, dataingressofaculdadebd: TDateTime;
-    i : integer;
+    i: integer;
   public
     { Public declarations }
   end;
@@ -181,13 +181,13 @@ end;
 
 procedure TForm1.ComboBoxCursos1Select(Sender: TObject);
 begin
-idcursobd := ComboBoxCursos1.getKey;
+  idcursobd := ComboBoxCursos1.getKey;
 
 end;
 
 procedure TForm1.DataSource1DataChange(Sender: TObject; Field: TField);
 begin
-
+  bdcall;
   edtID.Text := idbd;
   edtNome.Text := nomebd;
   edtTurno.Text := turnobd;
@@ -213,9 +213,13 @@ begin
   FDQuery2.Refresh;
   FDQuery1.Close;
   FDQuery1.SQL.clear;
-  FDQuery1.SQL.add('select * from AlunosCadastro ORDER BY id');
+  FDQuery1.SQL.add
+    ('select AlunosCadastro.id,AlunosCadastro.Nome,CursosCadastro.idCurso,CursosCadastro.Curso,AlunosCadastro.Turno,AlunosCadastro.Periodo,AlunosCadastro.DataNascimento,AlunosCadastro.DataIngressoFaculdade');
+  FDQuery1.SQL.add('from AlunosCadastro');
+  FDQuery1.SQL.add
+    ('inner join CursosCadastro on AlunosCadastro.IdCurso = CursosCadastro.IdCurso ORDER BY id');
   FDQuery1.Open;
-  ShowMessage('Aluno de código ' + idbd + ' deletado com sucesso.');
+  ShowMessage('Aluno deletado com sucesso.');
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -229,20 +233,24 @@ begin
   FDQuery1.SQL.clear;
   FDQuery1.SQL.add
     ('insert into AlunosCadastro (ID,NOME,IDCURSO,TURNO,PERIODO,DATANASCIMENTO,DATAINGRESSOFACULDADE)');
-    FDQuery1.SQL.add('values(''' + edtID.Text + ''',''' + edtNome.Text + ''',''' + idcursobd + ''',''' + edtTurno.Text + ''',''' +
-    edtPeriodo.Text + ''',''' + DateToStr(DateTimePicker1.Date) + ''',''' +
+  FDQuery1.SQL.add('values(''' + edtID.Text + ''',''' + edtNome.Text + ''',''' +
+    idcursobd + ''',''' + edtTurno.Text + ''',''' + edtPeriodo.Text + ''',''' +
+    DateToStr(DateTimePicker1.Date) + ''',''' +
     DateToStr(DateTimePicker2.Date) + ''')');
   FDQuery1.ExecSQL;
   FDQuery1.Close;
   FDQuery1.SQL.clear;
-  FDQuery1.SQL.add('select * from AlunosCadastro ORDER BY id');
+  FDQuery1.SQL.add
+    ('select AlunosCadastro.id,AlunosCadastro.Nome,CursosCadastro.idCurso,CursosCadastro.Curso,AlunosCadastro.Turno,AlunosCadastro.Periodo,AlunosCadastro.DataNascimento,AlunosCadastro.DataIngressoFaculdade');
+  FDQuery1.SQL.add('from AlunosCadastro');
+  FDQuery1.SQL.add
+    ('inner join CursosCadastro on AlunosCadastro.IdCurso = CursosCadastro.IdCurso ORDER BY id');
   FDQuery1.Open;
 end;
 
 procedure TForm1.list;
 begin
-
-i:=-1;
+  i := -1;
   ComboBoxCursos1.Items.clear;
   FDQuery1.Close;
   FDQuery1.SQL.clear;
@@ -256,11 +264,10 @@ i:=-1;
   FDQuery3.SQL.clear;
   FDQuery3.SQL.add('select Curso from CursosCadastro');
   FDQuery3.Open;
-  bdcall;
   while not FDQuery3.Eof do
   begin
-  i := i + 1;
-    ComboBoxCursos1.addMega(FDQuery3.Fields[0].AsString,inttostr(i));
+    i := i + 1;
+    ComboBoxCursos1.addMega(FDQuery3.Fields[0].AsString, inttostr(i));
     FDQuery3.Next;
   end;
   FDQuery3.Close;
@@ -272,15 +279,19 @@ begin
   FDQuery1.SQL.clear;
   FDQuery1.SQL.add('update AlunosCadastro');
   FDQuery1.SQL.add('set	id = ' + edtID.Text + ', Nome = ''' + edtNome.Text +
-    ''',idCurso = ''' + inttostr(ComboBoxCursos1.ItemIndex) + ''', Turno = ''' +
-    edtTurno.Text + ''', Periodo = ' + edtPeriodo.Text + ', DataNascimento = '''
-    + DateToStr(DateTimePicker1.Date) + ''', DataIngressoFaculdade = ''' +
+    ''',idCurso = ''' + idcursobd + ''', Turno = ''' + edtTurno.Text +
+    ''', Periodo = ' + edtPeriodo.Text + ', DataNascimento = ''' +
+    DateToStr(DateTimePicker1.Date) + ''', DataIngressoFaculdade = ''' +
     DateToStr(DateTimePicker2.Date) + '''');
   FDQuery1.SQL.add('where id = ' + idbd + '');
   FDQuery1.ExecSQL;
   FDQuery1.Close;
   FDQuery1.SQL.clear;
-  FDQuery1.SQL.add('select * from AlunosCadastro ORDER BY id');
+  FDQuery1.SQL.add
+    ('select AlunosCadastro.id,AlunosCadastro.Nome,CursosCadastro.idCurso,CursosCadastro.Curso,AlunosCadastro.Turno,AlunosCadastro.Periodo,AlunosCadastro.DataNascimento,AlunosCadastro.DataIngressoFaculdade');
+  FDQuery1.SQL.add('from AlunosCadastro');
+  FDQuery1.SQL.add
+    ('inner join CursosCadastro on AlunosCadastro.IdCurso = CursosCadastro.IdCurso ORDER BY id');
   FDQuery1.Open;
 
 end;

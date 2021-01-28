@@ -209,7 +209,6 @@
       'Server=localhost'
       'Database=dbAlunos'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 296
     Top = 32
