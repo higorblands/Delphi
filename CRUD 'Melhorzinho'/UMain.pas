@@ -195,7 +195,7 @@ begin
   edtPeriodo.Text := periodobd;
   DateTimePicker1.Date := datanascimentobd;
   DateTimePicker2.Date := dataingressofaculdadebd;
-  ComboBoxCursos1.Text:= cursobd;
+  ComboBoxCursos1.Text := cursobd;
 
 end;
 

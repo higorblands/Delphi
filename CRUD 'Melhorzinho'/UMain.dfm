@@ -196,11 +196,6 @@
     TabOrder = 14
     TextHint = 'Selecione o curso*'
     OnSelect = ComboBoxCursos1Select
-    Key.Strings = (
-      '1'
-      '2'
-      '3'
-      '4')
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
