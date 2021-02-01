@@ -13,7 +13,7 @@ type
     { Protected declarations }
   public
     { Public declarations }
-    FAuxTStrings: TStringList;
+    FKey: TStringList;
     constructor Create(AOwner: TComponent); override;
     Function getItem: TStringList;
     Procedure setItem(Value: TStringList);
@@ -22,6 +22,7 @@ type
     { Published declarations }
     property Key: TStringList read getItem write setItem;
     Procedure addMega(text1, text2: string);
+    Procedure chooseIndex(Code: string);
 
   end;
 
@@ -41,28 +42,33 @@ begin
   Key.Add(text2);
 end;
 
+procedure TComboBoxCursos.chooseIndex(Code: string);
+begin
+  ItemIndex := FKey.IndexOf(Code);
+end;
+
 constructor TComboBoxCursos.Create(AOwner: TComponent);
 begin
   inherited;
-  FAuxTStrings := TStringList.Create;
+  FKey := TStringList.Create;
 end;
 
 function TComboBoxCursos.getItem: TStringList;
 begin
-  result := FAuxTStrings;
+  result := FKey;
 end;
 
 function TComboBoxCursos.getKey: String;
 begin
-  result := FAuxTStrings[ItemIndex];
+  result := FKey[ItemIndex];
 end;
 
 procedure TComboBoxCursos.setItem(Value: TStringList);
 begin
-  if Assigned(FAuxTStrings) then
-    FAuxTStrings.Assign(Value)
+  if Assigned(FKey) then
+    FKey.Assign(Value)
   else
-    FAuxTStrings := Value;
+    FKey := Value;
 end;
 
 end.
