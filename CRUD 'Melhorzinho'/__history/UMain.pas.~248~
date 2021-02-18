@@ -143,11 +143,12 @@ type
     procedure ComboBoxCursos1Select(Sender: TObject);
   private
     { Private declarations }
-    idbd, nomebd, idcursobd, turnobd, periodobd, cursobd,
-      idcursobdComboBox: string;
+    idbd, nomebd, idcursobd, turnobd, periodobd,idcursobdComboBox, cursobd: string;
     datanascimentobd, dataingressofaculdadebd: TDateTime;
   public
     { Public declarations }
+  var
+    //idcursobdComboBox: integer;
   end;
 
 var
@@ -195,8 +196,7 @@ begin
   edtPeriodo.Text := periodobd;
   DateTimePicker1.Date := datanascimentobd;
   DateTimePicker2.Date := dataingressofaculdadebd;
-  ComboBoxCursos1.chooseIndex('2');
-
+  ComboBoxCursos1.chooseIndex(idcursobd);
 end;
 
 procedure TForm1.del;
@@ -229,10 +229,11 @@ begin
   FDQuery3.SQL.clear;
   FDQuery3.SQL.add('select idcurso,Curso from CursosCadastro');
   FDQuery3.Open;
-  idcursobdComboBox := FDQuery3.FieldByName('idcurso').AsString;
   while not FDQuery3.Eof do
   begin
-    ComboBoxCursos1.addMega(FDQuery3.Fields[1].AsString, idcursobdComboBox);
+  idcursobdComboBox := FDQuery3.FieldByName('idcurso').AsString;
+    ComboBoxCursos1.addMega(FDQuery3.Fields[1].AsString,
+      (idcursobdComboBox));
     FDQuery3.Next;
   end;
   FDQuery3.Close;

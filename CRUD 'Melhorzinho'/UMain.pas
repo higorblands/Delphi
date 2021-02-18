@@ -252,8 +252,8 @@ begin
     ('insert into AlunosCadastro (ID,NOME,IDCURSO,TURNO,PERIODO,DATANASCIMENTO,DATAINGRESSOFACULDADE)');
   FDQuery1.SQL.add('values(''' + edtID.Text + ''',''' + edtNome.Text + ''',''' +
     idcursobd + ''',''' + edtTurno.Text + ''',''' + edtPeriodo.Text + ''',''' +
-    DateToStr(DateTimePicker1.Date) + ''',''' +
-    DateToStr(DateTimePicker2.Date) + ''')');
+    FormatDateTime('yyyy-mm-dd hh:nn:ss',DateTimePicker1.Date) + ''',''' +
+    FormatDateTime('yyyy-mm-dd hh:nn:ss',DateTimePicker2.Date) + ''')');
   FDQuery1.ExecSQL;
   FDQuery1.Close;
   FDQuery1.SQL.clear;
@@ -287,8 +287,8 @@ begin
   FDQuery1.SQL.add('set	id = ' + edtID.Text + ', Nome = ''' + edtNome.Text +
     ''',idCurso = ''' + idcursobd + ''', Turno = ''' + edtTurno.Text +
     ''', Periodo = ' + edtPeriodo.Text + ', DataNascimento = ''' +
-    DateToStr(DateTimePicker1.Date) + ''', DataIngressoFaculdade = ''' +
-    DateToStr(DateTimePicker2.Date) + '''');
+    FormatDateTime('yyyy-mm-dd hh:nn:ss',DateTimePicker1.Date) + ''', DataIngressoFaculdade = ''' +
+    FormatDateTime('yyyy-mm-dd hh:nn:ss',DateTimePicker2.Date) + '''');
   FDQuery1.SQL.add('where id = ' + idbd + '');
   FDQuery1.ExecSQL;
   FDQuery1.Close;
