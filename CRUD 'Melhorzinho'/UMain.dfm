@@ -2,7 +2,7 @@
   Left = 0
   Top = 0
   Caption = 'Main'
-  ClientHeight = 391
+  ClientHeight = 377
   ClientWidth = 767
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -89,7 +89,7 @@
     OnClick = btnListClick
   end
   object btnInsert: TButton
-    Left = 8
+    Left = 16
     Top = 336
     Width = 75
     Height = 25
@@ -98,7 +98,7 @@
     OnClick = btnInsertClick
   end
   object btnUpdate: TButton
-    Left = 144
+    Left = 110
     Top = 336
     Width = 75
     Height = 25
@@ -107,7 +107,7 @@
     OnClick = btnUpdateClick
   end
   object btnDelete: TButton
-    Left = 272
+    Left = 208
     Top = 336
     Width = 75
     Height = 25
@@ -164,7 +164,7 @@
     TabOrder = 8
   end
   object btnConfirmDelete: TButton
-    Left = 376
+    Left = 304
     Top = 336
     Width = 89
     Height = 25
@@ -174,7 +174,7 @@
     OnClick = btnConfirmDeleteClick
   end
   object btnclear: TButton
-    Left = 512
+    Left = 415
     Top = 336
     Width = 75
     Height = 25

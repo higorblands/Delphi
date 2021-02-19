@@ -196,11 +196,6 @@
     TabOrder = 14
     TextHint = 'Selecione o curso*'
     OnSelect = ComboBoxCursos1Select
-    Key.Strings = (
-      '1'
-      '2'
-      '3'
-      '4')
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -209,25 +204,29 @@
       'Server=localhost'
       'Database=dbAlunos'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 296
+    Top = 32
   end
   object FDQuery1: TFDQuery
     Connection = FDConnection1
     Left = 344
+    Top = 32
   end
   object DataSource1: TDataSource
     DataSet = FDQuery1
     OnDataChange = DataSource1DataChange
     Left = 472
+    Top = 32
   end
   object FDQuery2: TFDQuery
     Connection = FDConnection1
     Left = 384
+    Top = 32
   end
   object FDQuery3: TFDQuery
     Connection = FDConnection1
     Left = 424
+    Top = 32
   end
 end
