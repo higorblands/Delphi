@@ -41,3 +41,25 @@ OBS: A partir de 266 deve-se contar a partir de 0. Ou seja:
 266 = 0
 
 267 = 1
+
+# Cadastro de alunos:
+ Faça um programa, com interface visual VCL, que forneça o usuário uma opção de selecionar um arquivo com extensão .TXT. O arquivo que pode ser usado como exemplo é o alunos.txt na branch "Main".
+
+Cada linha do arquivo contém um aluno na seguinte estrutura:
+
+NOME DO ALUNO | IDADE DO ALUNO | PESO DO ALUNO (Em KG) |
+
+O programa deverá ler o conteúdo deste arquivo e armazenar os dados de forma estruturada.
+
+Além disto, deverá listar os alunos à esquerda (ListBox) e , conforme o usuário selecionar um aluno, o programa deverá mostra a idade e o peso do aluno
+
+# Cadastro de alunos 02: 
+Faça o programa semelhante ao anterior.  O arquivo que pode ser usado como exemplo é o alunos02.txt na branch "Main".
+
+Onde:
+
+-O nome do aluno está nas primeiras 100 posições de cada linha.
+
+-A idade do aluno está da posição 101 a 103 de cada linha
+
+-O peso do aluno está da posição 104 a 108 de cada linha.
