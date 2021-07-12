@@ -1,5 +1,4 @@
-# Delphi Repositório de estudo
-
+Delphi Repositório de estudo
 Estrutura de Dados e Orientação a Objetos com Delphi.
 
 # Calculadora aritmética:
