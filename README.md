@@ -63,3 +63,110 @@ Onde:
 -A idade do aluno está da posição 101 a 103 de cada linha
 
 -O peso do aluno está da posição 104 a 108 de cada linha.
+
+# Faça um programa de cadastro pessoas(Cliente e Vendedor) Totalmente orientado a objetosou seja, o armazenamento de dados pode ser feito em memória com qualquer estrutura de dados (vetor, matriz e etc). 
+
+Toda pessoa tem as seguintes características:
+
+Nome [string][50][not null]
+
+Idade [integer][not null]
+
+Método Salvar (que valida e salva os dados) [fn :boo]
+
+Todo cliente tem , além das características de pessoa, o seguinte:
+
+Melhor dia de vencimento [integer][not null][1-31]
+
+Endereço de entrega[string][200][not null]
+
+Todo vendedor tem  , além das características de pessoa, o seguinte:
+
+Percentual de comissão[float][not null][>0]
+
+Tipo de vendedor[char][not null][I,E] (interno ou externo)
+
+Ao final , o programa deverá ter um botão que liste, de forma simples, todas as pessoas cadastradas.
+
+# Pedido de venda:
+ Faça um programa, com herança visual , que simule uma tela de pedido de venda. (3 tipos )
+
+Todo pedido de venda tem as seguintes características.
+
+Número do pedido[Integer][Not null]
+
+Nome do Vendedor[String][100][Not null]
+
+Valor do Pedido[Float][Not null]
+
+Nome do cliente[String][100][Not null]
+
+Um botão salvar, que valida e processa os dados.
+
+O pedido de venda interna tem, além das características de pedido de venda, o seguinte:
+
+Após o processamento dos dados, ele gera um código DAV, que é a concatenação do número do pedido com o data atual no seguinte formato”AAAAMMDD”.
+
+Não aceita pedidos com valor maior que 1.000,00.
+
+O pedido de venda externa tem, além das características de pedido de venda, o seguinte:
+
+Nome do vendedor externo[String][100][Not null] 
+
+Após o processamento dos dados, ele gera um código DAV, que é a concatenação do número do pedido com as três primeiras letras do vendedor externo e com o data atual no seguinte formato”AAAAMMDD”.
+
+O pedido de venda MOIP,além das características de pedido de venda interno, o seguinte:
+
+Número do pedido MOIP[string][20][Not null]
+
+Após o processamento do pedido, ele gera um código de autorização MOIP, que consiste na concatenação do número do pedido + Nº Ped MOIP + MD5 do código “7010”.
+
+# ComboBox2: 
+Faça um novo combo box, herdando do padrão, que contenha a propriedade keys, semelhante à propriedade itens, porém para armazenar códigos dos itens. Desta forma, faça também, uma função chamada getKey para retornar o código do item selecionado
+
+# RAD List:
+ Fazer programa VCL que realize uma listagem básica da tabela produto do banco do Kairos.
+
+# Join: 
+Fazer programa que liste os produtos e seus respectivos lotes em uma única lista.
+
+# Master detail:
+ Fazer programa semelhante ao anterior, porém agora em duas listas distintas e sincronizadas(a medida que o usuário selecionar um produto, deverão ser mostrados apenas os lotes deste produto).
+
+# Grade personalizada:
+ Faça um programa semelhante ao 1º, porém agora a listagem deve apresentar apenas as seguintes colunas: |Código do produto | Descrição do produto | Data da última alteração|.
+
+# Listagem assíncrona: 
+Faça um programa semelhante ao 1º, porém agora os dados devem ser armazenados em memória, fazendo com que não haja dependência da conexão.
+
+# Master Detail assíncrono: 
+Faça um programa semelhante ao 3º, porém assíncrono.
+
+# Banquinho: 
+Crie uma modelagem de uma tabela de banco de dados para armazenar o cadastro de alunos. Esta tabela deverá armazenar os seguintes dados:
+
+ID
+
+Nome
+
+Curso
+
+Turno
+
+Período
+
+Data de nascimento
+
+Data de ingresso na faculdade.
+
+# RAD CRUD: 
+Faça um programa de cadastro simples, sem muito código, apenas com componentes RAD, para cadastrar alunos.
+
+# CRUD básico: 
+Faça um outro programa de cadastro simples, agora sem utilizar componentes RAD, ou seja, utilizando componentes T-SQL. 
+
+# Remodelagem:
+ Modele e alimente manualmente uma nova tabela, chamada cursos. Ela deverá conter apenas o ID e o Nome dos cursos possíveis de uma determinada faculdade. Feito isto, crie uma restrição na tabela de alunos fazendo com que só seja permitido informar cursos existentes na tabela de cursos.
+
+# CRUD melhor”zinho”: 
+Altere o exercício 3 para fazer com que o usuário somente possa selecionar cursos pre-existentes. Ou seja, deverá utilizar combobox para  a seleção.
