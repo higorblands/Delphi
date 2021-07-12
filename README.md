@@ -26,7 +26,7 @@ Faça um programa, com interface de usuário utilizando a biblioteca VCL, que so
 Faça um programa, com interface visual VCL, que forneça o usuário uma opção de selecionar um arquivo com extensão .TXT. A tela deverá ter dois campos do tipo Memo. Após a seleção do arquivo, o programa deverá lê-lo e dividí-lo. Meta das linhas deverá ser escrita no memo  da direita, e a outra metade no memo da esquerda.  OBS: Se a quantidade de linhas for ímpar, o memo da esquerda ficará com mais linhas.
 
 # Odd Line select: 
-Faça um programa semelhante ao programa do exercício 1, porém, as linhas de número ímpar deverão ser escrita no memo da esquerda, logo, as linhas de número par  no memo da direita. 
+Faça um programa semelhante ao programa do "Split file", porém, as linhas de número ímpar deverão ser escrita no memo da esquerda, logo, as linhas de número par  no memo da direita. 
 
 # Criptografia fajuta: 
 Faça um programa, com interface visual VCL, que forneça o usuário uma opção de selecionar um arquivo com extensão .TXT. Após isto, o programa deverá criptografar todo o arquivo e gravar na mesma pasta do arquivo original. O nome do arquivo criptografado deverá ser concatenação do nome do arquivo original com o sufixo “_c”. A criptografia deverá utilizar a tabela ASCII, onde cada caractere criptografado deverá ser o caractere ASCII original + 10. Exemplo
